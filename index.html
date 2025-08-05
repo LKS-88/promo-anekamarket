@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Spesial - ANEKAMARKET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #34495e);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Promo Section */
+        .promo-section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .promo-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .promo-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .promo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .promo-card:hover .promo-img img {
+            transform: scale(1.1);
+        }
+        
+        .promo-content {
+            padding: 1.5rem;
+        }
+        
+        .promo-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .price {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+        }
+        
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: #95a5a6;
+            margin-left: 10px;
+        }
+        
+        .discount-badge {
+            background-color: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .promo-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), #34495e);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-shopping-basket"></i>
+                <span>ANEKAMARKET</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Produk</a></li>
+                    <li><a href="#">Promo</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Promo Spesial Bulan Ini</h1>
+            <p>Dapatkan diskon hingga 50% untuk berbagai produk pilihan di ANEKAMARKET. Promo terbatas hanya sampai stok habis!</p>
+            <a href="#promo" class="btn">Lihat Promo</a>
+        </div>
+    </section>
+    
+    <!-- Promo Section -->
+    <section class="promo-section" id="promo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Promo</h2>
+            </div>
+            
+            <div class="promo-grid">
+                <!-- Promo 1 -->
+                <div class="promo-card">
+                    <div class="promo-img">
+                        <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Buah Segar">
+                    </div>
+                    <div class="promo-content">
+                        <span class="discount-badge">Diskon 30%</span>
+                        <h3>Paket Buah Segar</h3>
+                        <p>Berisi berbagai macam buah segar pilihan dengan kualitas terbaik.</p>
+                        <div class="price">
+                            <span class="current-price">Rp 85.000</span>
+                            <span class="original-price">Rp 120.000</span>
+                        </div>
+                        <div class="promo-meta">
+                            <span><i class="fas fa-clock"></i> 5 Hari Lagi</span>
+                            <span><i class="fas fa-shopping-cart"></i> 12 Terjual</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promo 2 -->
+                <div class="promo-card">
+                    <div class="promo-img">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sayuran Organik">
+                    </div>
+                    <div class="promo-content">
+                        <span class="discount-badge">Diskon 40%</span>
+                        <h3>Sayuran Organik</h3>
+                        <p>Sayuran segar langsung dari petani lokal tanpa pestisida.</p>
+                        <div class="price">
+                            <span class="current-price">Rp 45.000</span>
+                            <span class="original-price">Rp 75.000</span>
+                        </div>
+                        <div class="promo-meta">
+                            <span><i class="fas fa-clock"></i> 3 Hari Lagi</span>
+                            <span><i class="fas fa-shopping-cart"></i> 23 Terjual</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promo 3 -->
+                <div class="promo-card">
+                    <div class="promo-img">
+                        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Daging Sapi Premium">
+                    </div>
+                    <div class="promo-content">
+                        <span class="discount-badge">Diskon 25%</span>
+                        <h3>Daging Sapi Premium</h3>
+                        <p>Daging sapi kualitas premium dengan marbling sempurna.</p>
+                        <div class="price">
+                            <span class="current-price">Rp 120.000</span>
+                            <span class="original-price">Rp 160.000</span>
+                        </div>
+                        <div class="promo-meta">
+                            <span><i class="fas fa-clock"></i> 7 Hari Lagi</span>
+                            <span><i class="fas fa-shopping-cart"></i> 8 Terjual</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promo 4 -->
+                <div class="promo-card">
+                    <div class="promo-img">
+                        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Paket Seafood">
+                    </div>
+                    <div class="promo-content">
+                        <span class="discount-badge">Diskon 50%</span>
+                        <h3>Paket Seafood</h3>
+                        <p>Berisi udang, cumi, dan ikan segar langsung dari nelayan.</p>
+                        <div class="price">
+                            <span class="current-price">Rp 99.000</span>
+                            <span class="original-price">Rp 198.000</span>
+                        </div>
+                        <div class="promo-meta">
+                            <span><i class="fas fa-clock"></i> 2 Hari Lagi</span>
+                            <span><i class="fas fa-shopping-cart"></i> 31 Terjual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Tunggu Apa Lagi?</h2>
+                <p>Dapatkan produk berkualitas dengan harga terbaik hanya di ANEKAMARKET. Promo terbatas, buruan sebelum kehabisan!</p>
+                <a href="#" class="btn">Beli Sekarang</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tentang Kami</h3>
+                    <p>ANEKAMARKET adalah pasar modern yang menyediakan berbagai kebutuhan sehari-hari dengan kualitas terbaik dan harga terjangkau.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Produk</a></li>
+                        <li><a href="#">Promo</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Pasar Baru No. 123, Jakarta</li>
+                        <li><i class="fas fa-phone"></i> (021) 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@anekamarket.com</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ANEKAMARKET. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
