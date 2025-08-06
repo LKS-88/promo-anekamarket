@@ -2,1033 +2,3358 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solusi Digital UMKM - ANEKAMARKET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="description" content="Promo Kita - Platform khusus penawaran promo dan diskon produk terbaik">
+    <meta name="keywords" content="promo, diskon, penawaran spesial, harga murah, cashback">
+    <meta name="author" content="Promo Kita">
+    <meta property="og:title" content="Promo Kita | Kumpulan Promo Terbaik">
+    <meta property="og:description" content="Temukan berbagai promo menarik dengan harga spesial hanya di Promo Kita">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://promokita.com">
+    <meta property="og:image" content="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png">
+    <title>Promo Kita | Kumpulan Promo Terbaik</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png" type="image/png">
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
-            --accent: #f59e0b;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
+            --primary: #e63946; /* Merah segar */
+            --secondary: #f1faee; /* Cream muda */
+            --accent: #a8dadc; /* Biru muda */
+            --light: #f8f9fa;
+            --dark: #1d3557; /* Biru tua */
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --success: #2a9d8f; /* Hijau */
+            --warning: #f4a261; /* Oranye */
+            --gold: #ffd166; /* Kuning emas */
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 50px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #ffffff;
-            color: var(--dark);
-            line-height: 1.6;
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.7;
             overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+            margin-bottom: 25px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.9), rgba(29, 53, 87, 0.95));
+            z-index: -1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.98);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+        
+        .logo img {
+            height: 120px;
+            width: auto;
+            animation: pulse 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 209, 102, 0.3));
+        }
+        
+        @keyframes pulse {
+            0% { 
+                transform: scale(1); 
+                opacity: 0.9;
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 1;
+                filter: drop-shadow(0 0 20px rgba(255, 209, 102, 0.7));
+            }
+            100% { 
+                transform: scale(1); 
+                opacity: 0.9;
+            }
+        }
+        
+        .tagline {
+            font-size: 2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+        
+        .tagline::before, .tagline::after {
+            content: '❝';
+            position: absolute;
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .tagline::before {
+            top: -30px;
+            left: -30px;
+        }
+        
+        .tagline::after {
+            bottom: -40px;
+            right: -30px;
+            transform: rotate(180deg);
+        }
+        
+        /* Search Bar in Header */
+        .header-search {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        .header-search input {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            padding-right: 4.5rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .header-search input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.3), var(--shadow-xl);
+        }
+        
+        .header-search button {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-search button:hover {
+            background: #ffc233;
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .scroll-down:hover {
+            opacity: 1;
+            transform: translateY(5px) translateX(-50%);
+            color: var(--gold);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
         
-        /* Header */
-        header {
-            background-color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        /* Navigation */
+        nav {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .header-content {
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.2rem 1.5rem;
+            transition: var(--transition);
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+        nav.scrolled .nav-container {
+            padding: 0.8rem 1.5rem;
+        }
+        
+        .nav-logo {
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
-            color: var(--primary);
+            gap: 12px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
         
-        .logo i {
-            margin-right: 10px;
-            font-size: 2rem;
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
         }
         
-        nav ul {
+        /* Nav Search */
+        .nav-search {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+            position: relative;
+            display: none; /* Hidden by default on mobile */
+        }
+        
+        .nav-search input {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding-right: 3rem;
+        }
+        
+        .nav-search input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.1);
+        }
+        
+        .nav-search button {
+            position: absolute;
+            right: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .nav-search button:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links {
             display: flex;
-            list-style: none;
+            gap: 2rem;
         }
         
-        nav ul li {
-            margin-left: 2rem;
-        }
-        
-        nav ul li a {
-            color: var(--dark);
+        .nav-links a {
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
-            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
         }
         
-        nav ul li a:hover {
+        .nav-links a:hover {
             color: var(--primary);
         }
         
-        .nav-btn {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .nav-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 70%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-            padding-right: 2rem;
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-            line-height: 1.2;
-            font-weight: 700;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--gray);
-            max-width: 90%;
-        }
-        
-        .btn {
-            display: inline-block;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
             background-color: var(--primary);
-            color: white;
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
             border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: white;
             color: var(--primary);
-            border: 1px solid var(--light-gray);
-            margin-left: 1rem;
-            box-shadow: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
         }
         
-        .btn-secondary:hover {
-            background-color: var(--light);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        /* Search Toggle Button for Mobile */
+        .search-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-right: 1rem;
         }
         
-        /* Features */
-        .features {
-            padding: 5rem 0;
-            background-color: white;
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            position: relative;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
+            margin-bottom: 4rem;
             color: var(--dark);
             position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: 0.5px;
         }
         
-        .section-title h2::after {
+        .section-title::after {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            display: block;
+            width: 100px;
             height: 4px;
-            background-color: var(--accent);
+            background: var(--gold);
+            margin: 1.5rem auto 0;
             border-radius: 2px;
         }
         
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 1rem auto 0;
-            font-size: 1.1rem;
+        /* Gallery Section */
+        .gallery-intro {
+            text-align: center;
+            margin-bottom: 5rem;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .gallery-intro p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
         }
         
-        .feature-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: var(--primary);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(16, 185, 129, 0.1);
-            border-radius: 12px;
+        .category-tabs {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            font-size: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
         }
         
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 600;
-        }
-        
-        .feature-card p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Promo Section */
-        .promo-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-        
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .promo-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s;
-            border: 1px solid var(--light-gray);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .promo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: var(--primary);
-        }
-        
-        .promo-header {
-            padding: 1.5rem;
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-        }
-        
-        .promo-header h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .promo-body {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .price {
-            margin: 1rem 0 2rem;
-            text-align: center;
-        }
-        
-        .current-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .original-price {
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            color: var(--gray);
-            margin-left: 10px;
-        }
-        
-        .discount-badge {
-            background-color: var(--secondary);
-            color: white;
-            padding: 0.3rem 1rem;
+        .category-btn {
+            padding: 0.8rem 2rem;
             border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            align-self: center;
+            background: white;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
         
-        .promo-features {
-            margin-bottom: 2rem;
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
         }
-        
-        .promo-features ul {
-            list-style: none;
-        }
-        
-        .promo-features ul li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.8rem;
-            color: var(--gray);
-        }
-        
-        .promo-features ul li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-        }
-        
-        .promo-footer {
-            margin-top: auto;
-            text-align: center;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid var(--light-gray);
-        }
-        
-        .testimonial-header {
+
+        /* Product Categories */
+        .product-categories {
             display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 2rem auto 3rem;
+            max-width: 1000px;
+        }
+
+        .product-category-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .product-category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(230, 57, 70, 0.2);
+        }
+
+        .product-category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(230, 57, 70, 0.3);
         }
         
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        /* GALLERY GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 16px;
             overflow: hidden;
-            margin-right: 1rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+            border: 1px solid rgba(0, 0, 0, 0.03);
         }
         
-        .testimonial-avatar img {
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: rgba(230, 57, 70, 0.1);
+        }
+        
+        .gallery-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+        }
+        
+        .gallery-badge.promo {
+            background: var(--success);
+        }
+        
+        .gallery-badge.seller {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--dark);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .gallery-badge.seller:hover {
+            background: #14213d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            aspect-ratio: 16/9;
+        }
+        
+        .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+            cursor: pointer;
         }
         
-        .testimonial-info h4 {
-            font-size: 1.1rem;
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.08);
+        }
+        
+        .gallery-details {
+            padding: 2.5rem;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
             color: var(--dark);
-            margin-bottom: 0.2rem;
+            font-family: 'Montserrat', sans-serif;
         }
         
-        .testimonial-info p {
-            color: var(--gray);
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
+            color: var(--text-light);
         }
         
-        .testimonial-rating {
-            color: var(--accent);
+        .gallery-code {
+            background: rgba(168, 218, 220, 0.1);
+            color: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .gallery-seller {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .gallery-seller i {
+            color: var(--primary);
+        }
+        
+        .gallery-price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .gallery-price .original-price {
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+        
+        .gallery-price .discount {
+            background: var(--success);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        /* Gallery Detail Expanded View */
+        .gallery-detail-expanded {
+            display: none;
+            padding: 0 2rem 2rem;
+            margin-top: -1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .gallery-detail-expanded.active {
+            display: block;
+            max-height: 1500px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .gallery-carousel {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: block;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-main-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-thumbnails {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) #f1f1f1;
+        }
+        
+        .gallery-thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .gallery-thumbnails::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .gallery-thumbnails::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .gallery-description {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .gallery-specs {
+            margin-top: 1.5rem;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+        
+        .spec-item {
+            display: flex;
             margin-bottom: 1rem;
         }
         
-        .testimonial-content {
-            color: var(--gray);
-            font-style: italic;
+        .spec-label {
+            font-weight: 600;
+            color: var(--dark);
+            min-width: 120px;
         }
         
-        /* CTA Section */
-        .cta-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .spec-value {
+            color: var(--text-light);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+        
+        .btn i {
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
             color: white;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d1323f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.3);
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-small {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Improved Product Action Buttons */
+        .gallery-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: rgba(168, 218, 220, 0.1);
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
             text-align: center;
         }
         
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
+        .btn-detail:hover {
+            background-color: rgba(168, 218, 220, 0.2);
+            transform: translateY(-2px);
         }
         
-        .cta-content h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
+        .btn-detail i {
+            transition: transform 0.3s ease;
         }
         
-        .cta-content p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
+        .btn-detail.active i {
+            transform: rotate(180deg);
         }
         
-        .cta-buttons {
+        .btn-order {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 1rem;
-        }
-        
-        .btn-white {
-            background-color: white;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .btn-white:hover {
-            background-color: var(--light);
-            color: var(--primary-dark);
-        }
-        
-        .btn-outline-white {
-            background-color: transparent;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--success);
             color: white;
-            border: 2px solid white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
         }
         
-        .btn-outline-white:hover {
-            background-color: white;
-            color: var(--primary);
+        .btn-order:hover {
+            background-color: #238f82;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(42, 157, 143, 0.3);
         }
         
-        /* Footer */
-        footer {
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-call {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
             background-color: var(--dark);
             color: white;
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
             font-weight: 600;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-        
-        .footer-column p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-column ul li a {
-            color: #94a3b8;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
             text-decoration: none;
-            transition: color 0.3s;
-            display: inline-block;
         }
         
-        .footer-column ul li a:hover {
-            color: white;
-            transform: translateX(5px);
+        .btn-call:hover {
+            background-color: #14213d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(29, 53, 87, 0.3);
         }
         
-        .contact-info {
-            color: #94a3b8;
-        }
-        
-        .contact-info li {
-            margin-bottom: 1rem;
-            padding-left: 1.8rem;
-            position: relative;
-        }
-        
-        .contact-info li i {
-            position: absolute;
-            left: 0;
-            top: 4px;
-            color: var(--accent);
-        }
-        
-        .social-links {
+        /* Pre-order Toggle Button */
+        .btn-preorder-toggle {
             display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: rgba(244, 162, 97, 0.15);
+            color: var(--warning);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid rgba(244, 162, 97, 0.2);
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
         }
         
-        .social-links a {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
+        .btn-preorder-toggle:hover {
+            background-color: rgba(244, 162, 97, 0.25);
+            transform: translateY(-2px);
+            border-color: rgba(244, 162, 97, 0.3);
+        }
+        
+        .btn-preorder-toggle.active {
+            background-color: rgba(244, 162, 97, 0.25);
+            border-color: var(--warning);
+        }
+        
+        /* Price Variations */
+        .price-variations {
+            margin: 1.5rem 0;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+        
+        .price-variation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+            background-color: rgba(248, 249, 250, 0.5);
+            cursor: pointer;
+        }
+        
+        .price-variation:hover {
+            background-color: rgba(230, 57, 70, 0.05);
+        }
+        
+        .price-variation.active {
+            background-color: rgba(230, 57, 70, 0.1);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .price-variation-name {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .price-variation-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Quantity Selector */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .quantity-label {
+            font-weight: 500;
+            color: var(--dark);
+            min-width: 80px;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            background-color: rgba(168, 218, 220, 0.1);
+            color: var(--dark);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            font-weight: bold;
         }
         
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
+        .quantity-btn:hover {
+            background-color: rgba(168, 218, 220, 0.2);
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .quantity-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+        
+        .unit-selector {
+            margin-left: 1rem;
+        }
+        
+        .unit-selector select {
+            padding: 0.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background-color: white;
+        }
+        
+        .unit-selector select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Total Price Display */
+        .total-price {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(42, 157, 143, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .total-price-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .total-price-value {
+            font-weight: 700;
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        /* Pre-order Form */
+        .preorder-form {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 251, 235, 0.8);
+            border-radius: 12px;
+            border: 1px dashed var(--warning);
+            display: none;
+            transition: var(--transition);
+        }
+        
+        .preorder-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .preorder-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .preorder-title i {
+            color: var(--warning);
+        }
+        
+        .preorder-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        .preorder-input:focus {
+            outline: none;
+            border-color: var(--warning);
+            box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.1);
+        }
+        
+        .preorder-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .btn-preorder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            background-color: var(--warning);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-preorder:hover {
+            background-color: #e3914a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 162, 97, 0.3);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: rgba(230, 57, 70, 0.1);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 0.3rem;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-text p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: rgba(230, 57, 70, 0.1);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+            background-color: white;
+        }
+        
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Form Status */
+        .form-status {
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .form-status.success {
+            background-color: rgba(42, 157, 143, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+        
+        .form-status.error {
+            background-color: rgba(230, 57, 70, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            display: block;
+        }
+        
+        /* Floating Contact Buttons */
+        .contact-bar {
+            position: fixed;
+            bottom: 3rem;
+            right: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 100;
+        }
+        
+        .contact-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(0);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .contact-btn:hover::after {
+            transform: scale(1);
+        }
+        
+        .contact-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        
+        .order {
+            background: linear-gradient(135deg, var(--primary), #d1323f);
+        }
+        
+        .phone {
+            background: linear-gradient(135deg, var(--success), #238f82);
+        }
+        
+        /* FOOTER DESIGN */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #14213d);
+            color: white;
+            padding: 6rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png') center/cover fixed;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-col {
+            padding: 0 1rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        
+        .footer-about {
+            grid-column: 1 / -1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-about h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-about p {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-logo span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .footer-links li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .footer-links li:hover::before {
+            transform: translateY(-50%) scale(1.3);
+            background-color: white;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(10px);
+        }
+        
+        /* Payment Methods Section */
+        .payment-methods {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .payment-methods h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+        
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .payment-icon {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .payment-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.2);
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            font-size: 1rem;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
+            padding: 2rem 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .copyright a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+        
+        .copyright a:hover {
+            color: white;
+        }
+        
+        .copyright a:hover::after {
+            width: 100%;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .modal.show {
+            opacity: 1;
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 550px;
+            width: 90%;
+            padding: 4rem;
+            position: relative;
+            animation: modalFadeIn 0.5s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(0);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: rgba(230, 57, 70, 0.1);
+        }
+        
+        .modal h2 {
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .modal h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .search-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .search-modal-content {
+            background: transparent;
+            max-width: 800px;
+            width: 90%;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .search-modal-input {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .search-modal-input:focus {
+            outline: none;
+            border-bottom-color: var(--primary);
+        }
+        
+        .search-modal-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .close-search-modal {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        
+        .close-search-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .search-results {
+            margin-top: 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        
+        .search-result-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .search-result-item h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .search-result-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+        
+        .search-result-item .category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(230, 57, 70, 0.2);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .search-result-item .price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: block;
+        }
+        
+        .no-results {
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Image Zoom Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-image-modal {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-image-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        /* Audio Element for Button Sounds */
+        audio {
+            display: none;
+        }
+        
+        /* Lazy Loading */
+        .lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy.loaded {
+            opacity: 1;
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .logo {
+                font-size: 4rem;
+            }
+            
+            .logo img {
+                height: 100px;
+            }
+            
+            .tagline {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-main-image {
+                height: 400px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            }
+        }
+        
         @media (max-width: 992px) {
-            .hero-content {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .logo img {
+                height: 90px;
+            }
+            
+            .tagline {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 3rem;
+            }
+            
+            .gallery-main-image {
+                height: 350px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            }
+            
+            .gallery-details {
+                padding: 2rem;
+            }
+            
+            .gallery-detail-expanded {
+                padding: 0 1.5rem 1.5rem;
+            }
+            
+            /* Mobile Navigation */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: white;
                 flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 1.5rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                padding-top: 80px;
+                overflow-y: auto;
             }
             
-            .hero-text {
-                padding-right: 0;
-                margin-bottom: 3rem;
-                text-align: center;
+            .nav-links.active {
+                right: 0;
             }
             
-            .hero p {
-                max-width: 100%;
+            .mobile-menu-toggle, .search-toggle {
+                display: block;
             }
             
-            .hero-image {
-                margin-top: 2rem;
+            .nav-search {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-search.active {
+                display: block;
+            }
+            
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .contact-bar {
+                bottom: 2rem;
+                right: 2rem;
             }
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+            header {
+                min-height: auto;
+                padding: 0;
             }
             
-            nav {
-                margin-top: 1.5rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .btn-group {
-                display: flex;
+            .logo {
+                font-size: 3rem;
                 flex-direction: column;
                 gap: 1rem;
             }
             
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: 1rem;
+            .logo img {
+                height: 80px;
             }
             
-            .cta-buttons {
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .header-search {
+                max-width: 90%;
+                margin-bottom: 2rem;
+            }
+            
+            .header-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .gallery-main-image {
+                height: 300px;
+            }
+            
+            .gallery-details {
+                padding: 1.5rem;
+            }
+            
+            .gallery-detail-expanded {
+                padding: 0 1rem 1rem;
+            }
+            
+            .contact-bar {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+            
+            .contact-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-about {
+                grid-column: 1 / -1;
+            }
+            
+            .modal-content {
+                padding: 3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .logo img {
+                height: 70px;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .gallery-main-image {
+                height: 250px;
+            }
+            
+            .gallery-details {
+                padding: 1.5rem;
+            }
+            
+            .gallery-detail-expanded {
+                padding: 0 1rem 1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 2.5rem 2rem;
+            }
+            
+            .contact-bar {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .contact-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 2.5rem 2rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .logo img {
+                height: 60px;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-main-image {
+                height: 200px;
+            }
+            
+            .thumbnail {
+                width: 70px;
+                height: 70px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+        <h2 style="color: white; font-family: 'Montserrat', sans-serif; margin-top: 1.5rem;">Promo Kita</h2>
+    </div>
+    
+    <!-- Background Music - Autoplay and Loop -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://github.com/LenteraKarya/jualan-kita/blob/main/assets/audio/Musik%20website.mp3?raw=true" type="audio/mpeg">
+    </audio>
+    
+    <!-- Header Modern -->
+    <header id="home">
+        <div class="header-overlay"></div>
+        <div class="header-content">
             <div class="logo">
-                <i class="fas fa-cash-register"></i>
-                <span>ANEKAMARKET</span>
+                <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png" alt="Promo Kita Logo">
+                <span>Promo Kita</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#features">Fitur</a></li>
-                    <li><a href="#promo">Promo</a></li>
-                    <li><a href="#testimoni">Testimoni</a></li>
-                    <li><a href="#kontak">Kontak</a></li>
-                    <li><a href="#" class="nav-btn">Demo Gratis</a></li>
-                </ul>
-            </nav>
+            <p class="tagline">Temukan Promo Terbaik dengan Harga Spesial</p>
+            
+            <!-- Search Bar in Header -->
+            <div class="header-search">
+                <input type="text" id="headerSearchInput" placeholder="Cari produk promo...">
+                <button id="headerSearchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="header-buttons">
+                <a href="#gallery" class="btn btn-primary">
+                    <i class="fas fa-tags"></i> Lihat Promo Hari Ini
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> Hubungi Kami
+                </a>
+            </div>
+            <a href="#gallery" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </header>
     
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Transformasi Bisnis UMKM Anda dengan Solusi Digital Terbaik</h1>
-                <p>Software profesional untuk kasir, pembukuan, dan manajemen bisnis dengan harga terjangkau. Tingkatkan efisiensi dan pertumbuhan bisnis Anda sekarang!</p>
-                <div class="btn-group">
-                    <a href="#promo" class="btn">Lihat Promo</a>
-                    <a href="#" class="btn btn-secondary">Konsultasi Gratis</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Dashboard Aplikasi ANEKAMARKET">
-            </div>
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Solusi Lengkap untuk Bisnis Anda</h2>
-                <p>Kami menyediakan berbagai modul aplikasi yang dapat disesuaikan dengan kebutuhan bisnis UMKM Anda</p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png" alt="Promo Kita Logo">
+                <span>Promo Kita</span>
+            </a>
+            
+            <!-- Nav Search (Hidden on mobile) -->
+            <div class="nav-search" id="navSearch">
+                <input type="text" placeholder="Cari produk promo...">
+                <button><i class="fas fa-search"></i></button>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cash-register"></i>
-                    </div>
-                    <h3>Aplikasi Kasir</h3>
-                    <p>Sistem kasir modern dengan fitur lengkap mulai dari transaksi cepat, manajemen stok, hingga laporan penjualan real-time.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3>Website UMKM</h3>
-                    <p>Website profesional dengan desain responsif untuk mempromosikan bisnis Anda secara online dengan fitur katalog produk dan kontak langsung.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Aplikasi Cafe & Resto</h3>
-                    <p>Solusi lengkap untuk manajemen restoran mulai dari pemesanan, kitchen display, hingga analisis menu terlaris.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Aplikasi Keuangan</h3>
-                    <p>Kelola arus kas, hutang piutang, dan laporan keuangan bisnis Anda secara terintegrasi dan mudah dipahami.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Aplikasi Pembukuan</h3>
-                    <p>Sistem pembukuan akurat yang memudahkan pencatatan transaksi dan penyusunan laporan keuangan sesuai standar.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Aplikasi Mobile</h3>
-                    <p>Pantau dan kelola bisnis Anda dari mana saja melalui smartphone dengan aplikasi mobile yang terintegrasi sempurna.</p>
-                    <a href="#" class="btn btn-secondary">Selengkapnya</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Promo Section -->
-    <section class="promo-section" id="promo">
-        <div class="container">
-            <div class="section-title">
-                <h2>Paket Promo Spesial</h2>
-                <p>Manfaatkan penawaran terbatas kami untuk mendapatkan solusi terbaik bagi bisnis Anda</p>
-            </div>
+            <button class="search-toggle" id="searchToggle">
+                <i class="fas fa-search"></i>
+            </button>
             
-            <div class="promo-grid">
-                <!-- Paket 1 -->
-                <div class="promo-card">
-                    <div class="promo-header">
-                        <h3>Starter Pack</h3>
-                    </div>
-                    <div class="promo-body">
-                        <div class="discount-badge">Hemat 30%</div>
-                        <div class="price">
-                            <span class="current-price">Rp 1.499.000</span>
-                            <span class="original-price">Rp 2.150.000</span>
-                        </div>
-                        <div class="promo-features">
-                            <ul>
-                                <li>Aplikasi Kasir Dasar</li>
-                                <li>Website UMKM Sederhana</li>
-                                <li>Pembukuan Sederhana</li>
-                                <li>Pelatihan 2 Jam</li>
-                                <li>Dukungan Email</li>
-                            </ul>
-                        </div>
-                        <div class="promo-footer">
-                            <a href="https://wa.me/6285647709114?text=Saya%20tertarik%20dengan%20Paket%20Starter%20Pack" class="btn">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Paket 2 -->
-                <div class="promo-card">
-                    <div class="promo-header" style="background-color: var(--secondary);">
-                        <h3>Business Pack</h3>
-                    </div>
-                    <div class="promo-body">
-                        <div class="discount-badge" style="background-color: var(--primary);">Hemat 40%</div>
-                        <div class="price">
-                            <span class="current-price">Rp 2.999.000</span>
-                            <span class="original-price">Rp 4.990.000</span>
-                        </div>
-                        <div class="promo-features">
-                            <ul>
-                                <li>Aplikasi Kasir Lengkap</li>
-                                <li>Website UMKM Profesional</li>
-                                <li>Aplikasi Pembukuan Lengkap</li>
-                                <li>Pelatihan 4 Jam</li>
-                                <li>Dukungan Prioritas</li>
-                                <li>Gratis Domain 1 Tahun</li>
-                            </ul>
-                        </div>
-                        <div class="promo-footer">
-                            <a href="https://wa.me/6285647709114?text=Saya%20tertarik%20dengan%20Paket%20Business%20Pack" class="btn" style="background-color: var(--secondary);">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Paket 3 -->
-                <div class="promo-card">
-                    <div class="promo-header" style="background-color: var(--accent);">
-                        <h3>Enterprise Pack</h3>
-                    </div>
-                    <div class="promo-body">
-                        <div class="discount-badge" style="background-color: var(--primary);">Hemat 50%</div>
-                        <div class="price">
-                            <span class="current-price">Rp 4.499.000</span>
-                            <span class="original-price">Rp 8.999.000</span>
-                        </div>
-                        <div class="promo-features">
-                            <ul>
-                                <li>Semua Fitur Business Pack</li>
-                                <li>Aplikasi Cafe/Resto</li>
-                                <li>Aplikasi Mobile</li>
-                                <li>Pelatihan 8 Jam</li>
-                                <li>Dukungan 24/7</li>
-                                <li>Gratis Maintenance 1 Tahun</li>
-                                <li>Integrasi Payment Gateway</li>
-                            </ul>
-                        </div>
-                        <div class="promo-footer">
-                            <a href="https://wa.me/6285647709114?text=Saya%20tertarik%20dengan%20Paket%20Enterprise%20Pack" class="btn" style="background-color: var(--accent);">Pesan Sekarang</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimoni">
-        <div class="container">
-            <div class="section-title">
-                <h2>Apa Kata Klien Kami?</h2>
-                <p>Berikut testimoni dari pelanggan yang telah menggunakan solusi digital kami</p>
-            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
             
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Wijaya">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Sarah Wijaya</h4>
-                            <p>Pemilik Kedai Kopi Mantap</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"Aplikasi kasir dari ANEKAMARKET sangat membantu operasional kedai kami. Transaksi jadi lebih cepat dan laporan keuangan sangat detail. Pelanggan juga senang dengan sistem antrian yang terintegrasi."</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Budi Santoso">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Budi Santoso</h4>
-                            <p>Pemilik Toko Bangunan Jaya</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"Sistem pembukuan yang sangat membantu. Sekarang saya bisa memantau perkembangan bisnis kapan saja melalui smartphone. Dukungan teknis mereka juga sangat responsif."</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dewi Lestari">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>Dewi Lestari</h4>
-                            <p>Pemilik Restoran Sederhana</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <p>"Aplikasi untuk restoran dari ANEKAMARKET benar-benar mengubah cara kami beroperasi. Fitur pemesanan online dan manajemen stok sangat membantu mengurangi pemborosan bahan makanan."</p>
-                    </div>
-                </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Beranda</a>
+                <a href="#gallery">Promo</a>
+                <a href="#contact">Kontak</a>
             </div>
         </div>
-    </section>
+    </nav>
     
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Siap Mengembangkan Bisnis Anda?</h2>
-                <p>Jangan lewatkan kesempatan untuk mendapatkan solusi digital terbaik dengan harga spesial. Hubungi kami sekarang untuk konsultasi gratis!</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/6285647709114" class="btn btn-white"><i class="fab fa-whatsapp"></i> Hubungi via WhatsApp</a>
-                    <a href="mailto:lenterakaryasitubondo@gmail.com" class="btn btn-outline-white"><i class="fas fa-envelope"></i> Kirim Email</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer id="kontak">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Tentang Kami</h3>
-                    <p>ANEKAMARKET menyediakan solusi software profesional untuk membantu UMKM mengelola bisnis secara digital dengan mudah dan efisien.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+    <div class="container">
+        <!-- Gallery Section -->
+        <section class="gallery" id="gallery">
+            <h2 class="section-title">Promo Spesial</h2>
+            <div class="gallery-intro">
+                <p>Jelajahi koleksi promo menarik dengan diskon spesial. Klik "Detail" untuk melihat lebih banyak informasi tentang promo yang tersedia.</p>
                 
-                <div class="footer-column">
-                    <h3>Produk Kami</h3>
-                    <ul>
-                        <li><a href="#">Aplikasi Kasir</a></li>
-                        <li><a href="#">Website UMKM</a></li>
-                        <li><a href="#">Aplikasi Cafe & Resto</a></li>
-                        <li><a href="#">Aplikasi Keuangan</a></li>
-                        <li><a href="#">Aplikasi Pembukuan</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Link Cepat</h3>
-                    <ul>
-                        <li><a href="#">Beranda</a></li>
-                        <li><a href="#features">Fitur</a></li>
-                        <li><a href="#promo">Promo</a></li>
-                        <li><a href="#testimoni">Testimoni</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Hubungi Kami</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <a href="tel:085647709114">0856-4770-9114</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:lenterakaryasitubondo@gmail.com">lenterakaryasitubondo@gmail.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Jl. Raya Situbondo No. 123, Jawa Timur</span>
-                        </li>
-                    </ul>
+                <!-- Product Categories -->
+                <div class="product-categories">
+                    <button class="product-category-btn active" data-category="all">Semua Kategori</button>
+                    <button class="product-category-btn" data-category="food">Makanan & Minuman</button>
+                    <button class="product-category-btn" data-category="snack">Kue & Cemilan</button>
+                    <button class="product-category-btn" data-category="electronics">Elektronik</button>
+                    <button class="product-category-btn" data-category="fashion">Fashion</button>
+                    <button class="product-category-btn" data-category="home">Perlengkapan Rumah</button>
                 </div>
             </div>
             
-            <div class="copyright">
-                <p>&copy; 2023 ANEKAMARKET. All Rights Reserved. Developed by Lentera Karya Situbondo</p>
+            <div class="gallery-grid">
+                <!-- GALLERY ITEM 1 - FOOD PROMO -->
+                <div class="gallery-item" data-category="food" data-type="promo">
+                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: Mochi UMA</a>
+                    <span class="gallery-badge promo">Promo Spesial</span>
+                    <div class="gallery-image-container">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/kue-ulink.jpeg" alt="Promo Kue Mochi UMA" class="gallery-image lazy" loading="lazy">
+                    </div>
+                    <div class="gallery-details">
+                        <h3 class="gallery-title">Promo Aneka Kue Lezat Mochi Uma</h3>
+                        <div class="gallery-meta">
+                            <span class="gallery-code">Kode: MCU-2025-2830</span>
+                            <span class="gallery-seller"><i class="fas fa-store"></i> Mochi UMA</span>
+                        </div>
+                        <p class="gallery-price">
+                            Rp 10.000 <span class="original-price">Rp 15.000</span>
+                            <span class="discount">33%</span>
+                        </p>
+                        
+                        <!-- Price Variations -->
+                        <div class="price-variations">
+                            <div class="price-variation active" data-price="10000">
+                                <span class="price-variation-name">Pancake Durian</span>
+                                <span class="price-variation-value">Rp 10.000</span>
+                            </div>
+                            <div class="price-variation" data-price="10000">
+                                <span class="price-variation-name">Mochi</span>
+                                <span class="price-variation-value">Rp 10.000 (3pcs)</span>
+                            </div>
+                            <div class="price-variation" data-price="10000">
+                                <span class="price-variation-name">Cireng Ayam Suwir</span>
+                                <span class="price-variation-value">Rp 10.000</span>
+                            </div>
+                            <div class="price-variation" data-price="10000">
+                                <span class="price-variation-name">Corndog Coklat</span>
+                                <span class="price-variation-value">Rp 10.000 (isi 3)</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <span class="quantity-label">Jumlah:</span>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <div class="unit-selector">
+                                <select class="unit-select">
+                                    <option value="pcs" selected>pcs</option>
+                                    <option value="pack">pack</option>
+                                    <option value="set">set</option>
+                                    <option value="lusin">lusin</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Total Price -->
+                        <div class="total-price">
+                            <span class="total-price-label">Total Harga:</span>
+                            <span class="total-price-value">Rp 10.000</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="gallery-actions">
+                            <button class="btn-detail" data-target="details-MCU-2025-2830">
+                                <i class="fas fa-chevron-down"></i> Detail Produk
+                            </button>
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                            </button>
+                            <button class="btn-preorder-toggle">
+                                <i class="fas fa-calendar-check"></i> Pre-Order
+                            </button>
+                        </div>
+                        
+                        <!-- Pre-order Form -->
+                        <div class="preorder-form">
+                            <div class="preorder-title">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Form Uang Muka (DP)</span>
+                            </div>
+                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
+                            <p class="preorder-note">
+                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
+                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
+                            </p>
+                            <button class="btn-preorder">
+                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
+                            </button>
+                        </div>
+                        
+                        <div id="details-MCU-2025-2830" class="gallery-detail-expanded">
+                            <div class="gallery-carousel">
+                                <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/kue-ulink.jpeg" alt="Promo Produk Mochi UMA" class="gallery-main-image lazy" loading="lazy" id="main-image-1">
+                                <div class="gallery-thumbnails">
+                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/pancake-durian.jpeg" alt="Promo Pancake Durian" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
+                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/mochi.jpeg" alt="Promo Aneka Mochi" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
+                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/cireng.jpeg" alt="Promo Cireng Ayam Suwir" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
+                                </div>
+                            </div>
+                            
+                            <p class="gallery-description">
+                                <strong>PROMO SPESIAL!</strong> Mochi UMA menghadirkan paket promo aneka kue lezat dengan harga spesial. Nikmati berbagai pilihan kue premium dengan diskon menarik untuk waktu terbatas. Setiap produk dibuat dengan bahan pilihan dan teknik khusus untuk menjamin cita rasa autentik. Jangan lewatkan kesempatan ini untuk menikmati kue berkualitas dengan harga terjangkau!
+                            </p>
+                            
+                            <div class="gallery-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Kode Promo:</span>
+                                    <span class="spec-value">MCU-2025-2830</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Nama UMKM:</span>
+                                    <span class="spec-value">Mochi UMA</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Pemilik:</span>
+                                    <span class="spec-value">ULink</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Alamat:</span>
+                                    <span class="spec-value">Jl. Wijaya Kusuma Samping Bidan Ika</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Kontak:</span>
+                                    <span class="spec-value">089679013099 | nurilaneeh@gmail.com</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Media Sosial:</span>
+                                    <span class="spec-value">TikTok @mochi.uma3</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Daftar Promo:</span>
+                                    <span class="spec-value">
+                                        • Pancake Durian hanya Rp10.000<br>
+                                        • Mochi 3pcs Rp10.000<br>
+                                        • Cireng Ayam Suwir Rp10.000<br>
+                                        • Corndog Coklat isi 3 Rp10.000
+                                    </span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Periode Promo:</span>
+                                    <span class="spec-value">Sampai 31 Agustus 2025</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Catatan:</span>
+                                    <span class="spec-value">Harga bisa berubah sewaktu-waktu</span>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-actions-expanded">
+                                <a href="https://wa.me/6289679013099?text=Halo%20Mochi%20UMA,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                                </a>
+                                <a href="tel:+6289679013099" class="btn-call">
+                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALLERY ITEM 2 - FASHION PROMO -->
+                <div class="gallery-item" data-category="fashion" data-type="promo">
+                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: FashionKu</a>
+                    <span class="gallery-badge promo">Diskon 50%</span>
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Fashion" class="gallery-image lazy" loading="lazy">
+                    </div>
+                    <div class="gallery-details">
+                        <h3 class="gallery-title">Promo Akhir Tahun FashionKu</h3>
+                        <div class="gallery-meta">
+                            <span class="gallery-code">Kode: FSH-2025-3348</span>
+                            <span class="gallery-seller"><i class="fas fa-store"></i> FashionKu</span>
+                        </div>
+                        <p class="gallery-price">
+                            Rp 99.000 <span class="original-price">Rp 199.000</span>
+                            <span class="discount">50%</span>
+                        </p>
+                        
+                        <!-- Price Variations -->
+                        <div class="price-variations">
+                            <div class="price-variation active" data-price="99000">
+                                <span class="price-variation-name">Kaos Polos</span>
+                                <span class="price-variation-value">Rp 99.000</span>
+                            </div>
+                            <div class="price-variation" data-price="149000">
+                                <span class="price-variation-name">Kemeja</span>
+                                <span class="price-variation-value">Rp 149.000</span>
+                            </div>
+                            <div class="price-variation" data-price="199000">
+                                <span class="price-variation-name">Jeans</span>
+                                <span class="price-variation-value">Rp 199.000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <span class="quantity-label">Jumlah:</span>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <div class="unit-selector">
+                                <select class="unit-select">
+                                    <option value="pcs" selected>pcs</option>
+                                    <option value="lusin">lusin</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Total Price -->
+                        <div class="total-price">
+                            <span class="total-price-label">Total Harga:</span>
+                            <span class="total-price-value">Rp 99.000</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="gallery-actions">
+                            <button class="btn-detail" data-target="details-FSH-2025-3348">
+                                <i class="fas fa-chevron-down"></i> Detail Produk
+                            </button>
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                            </button>
+                            <button class="btn-preorder-toggle">
+                                <i class="fas fa-calendar-check"></i> Pre-Order
+                            </button>
+                        </div>
+                        
+                        <!-- Pre-order Form -->
+                        <div class="preorder-form">
+                            <div class="preorder-title">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Form Uang Muka (DP)</span>
+                            </div>
+                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
+                            <p class="preorder-note">
+                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
+                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
+                            </p>
+                            <button class="btn-preorder">
+                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
+                            </button>
+                        </div>
+                        
+                        <div id="details-FSH-2025-3348" class="gallery-detail-expanded">
+                            <div class="gallery-carousel">
+                                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Fashion" class="gallery-main-image lazy" loading="lazy" id="main-image-2">
+                                <div class="gallery-thumbnails">
+                                    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kaos Polos" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
+                                    <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kemeja" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
+                                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jeans" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
+                                </div>
+                            </div>
+                            
+                            <p class="gallery-description">
+                                <strong>DISKON AKHIR TAHUN 50%!</strong> FashionKu memberikan promo spesial akhir tahun dengan diskon hingga 50% untuk berbagai produk fashion berkualitas. Mulai dari kaos polos, kemeja, hingga jeans dengan bahan premium dan desain terkini. Promo ini berlaku untuk waktu terbatas, jangan lewatkan kesempatan ini untuk memperbarui koleksi fashion Anda dengan harga spesial!
+                            </p>
+                            
+                            <div class="gallery-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Kode Promo:</span>
+                                    <span class="spec-value">FSH-2025-3348</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Nama Toko:</span>
+                                    <span class="spec-value">FashionKu</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Alamat:</span>
+                                    <span class="spec-value">Jl. Fashion No. 123, Kota Anda</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Kontak:</span>
+                                    <span class="spec-value">081234567890 | fashionku@example.com</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Daftar Promo:</span>
+                                    <span class="spec-value">
+                                        • Kaos Polos <s>Rp199.000</s> <strong>Rp99.000</strong> (50% OFF)<br>
+                                        • Kemeja <s>Rp299.000</s> <strong>Rp149.000</strong> (50% OFF)<br>
+                                        • Jeans <s>Rp399.000</s> <strong>Rp199.000</strong> (50% OFF)
+                                    </span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Periode Promo:</span>
+                                    <span class="spec-value">1 - 31 Desember 2025</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Syarat & Ketentuan:</span>
+                                    <span class="spec-value">
+                                        • Promo berlaku untuk pembelian online dan offline<br>
+                                        • Minimal pembelian Rp200.000 untuk gratis ongkir<br>
+                                        • Stok terbatas
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-actions-expanded">
+                                <a href="https://wa.me/6281234567890?text=Halo%20FashionKu,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                                </a>
+                                <a href="tel:+6281234567890" class="btn-call">
+                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALLERY ITEM 3 - ELECTRONICS PROMO -->
+                <div class="gallery-item" data-category="electronics" data-type="promo">
+                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: TechShop</a>
+                    <span class="gallery-badge promo">Cashback 20%</span>
+                    <div class="gallery-image-container">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Elektronik" class="gallery-image lazy" loading="lazy">
+                    </div>
+                    <div class="gallery-details">
+                        <h3 class="gallery-title">Promo Gadget TechShop</h3>
+                        <div class="gallery-meta">
+                            <span class="gallery-code">Kode: TEC-2025-4567</span>
+                            <span class="gallery-seller"><i class="fas fa-store"></i> TechShop</span>
+                        </div>
+                        <p class="gallery-price">
+                            Rp 7.999.000 <span class="original-price">Rp 9.999.000</span>
+                            <span class="discount">20%</span>
+                        </p>
+                        
+                        <!-- Price Variations -->
+                        <div class="price-variations">
+                            <div class="price-variation active" data-price="7999000">
+                                <span class="price-variation-name">MacBook Air</span>
+                                <span class="price-variation-value">Rp 7.999.000</span>
+                            </div>
+                            <div class="price-variation" data-price="5999000">
+                                <span class="price-variation-name">iPad Pro</span>
+                                <span class="price-variation-value">Rp 5.999.000</span>
+                            </div>
+                            <div class="price-variation" data-price="2999000">
+                                <span class="price-variation-name">iPhone SE</span>
+                                <span class="price-variation-value">Rp 2.999.000</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <span class="quantity-label">Jumlah:</span>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" class="quantity-input" value="1" min="1">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <div class="unit-selector">
+                                <select class="unit-select">
+                                    <option value="pcs" selected>pcs</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Total Price -->
+                        <div class="total-price">
+                            <span class="total-price-label">Total Harga:</span>
+                            <span class="total-price-value">Rp 7.999.000</span>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="gallery-actions">
+                            <button class="btn-detail" data-target="details-TEC-2025-4567">
+                                <i class="fas fa-chevron-down"></i> Detail Produk
+                            </button>
+                            <button class="btn-order">
+                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                            </button>
+                            <button class="btn-preorder-toggle">
+                                <i class="fas fa-calendar-check"></i> Pre-Order
+                            </button>
+                        </div>
+                        
+                        <!-- Pre-order Form -->
+                        <div class="preorder-form">
+                            <div class="preorder-title">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Form Uang Muka (DP)</span>
+                            </div>
+                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
+                            <p class="preorder-note">
+                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
+                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
+                            </p>
+                            <button class="btn-preorder">
+                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
+                            </button>
+                        </div>
+                        
+                        <div id="details-TEC-2025-4567" class="gallery-detail-expanded">
+                            <div class="gallery-carousel">
+                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Elektronik" class="gallery-main-image lazy" loading="lazy" id="main-image-3">
+                                <div class="gallery-thumbnails">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="MacBook Air" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
+                                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPad Pro" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
+                                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone SE" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
+                                </div>
+                            </div>
+                            
+                            <p class="gallery-description">
+                                <strong>CASHBACK 20%!</strong> TechShop memberikan promo spesial untuk produk gadget terbaru dengan cashback hingga 20%. Dapatkan MacBook Air, iPad Pro, atau iPhone SE dengan harga terbaik di pasaran. Semua produk original dengan garansi resmi 1 tahun. Promo ini berlaku untuk pembelian online dan offline dengan syarat dan ketentuan yang berlaku.
+                            </p>
+                            
+                            <div class="gallery-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Kode Promo:</span>
+                                    <span class="spec-value">TEC-2025-4567</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Nama Toko:</span>
+                                    <span class="spec-value">TechShop</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Alamat:</span>
+                                    <span class="spec-value">Jl. Teknologi No. 456, Kota Anda</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Kontak:</span>
+                                    <span class="spec-value">082345678901 | techshop@example.com</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Daftar Promo:</span>
+                                    <span class="spec-value">
+                                        • MacBook Air <s>Rp9.999.000</s> <strong>Rp7.999.000</strong> (20% OFF)<br>
+                                        • iPad Pro <s>Rp7.499.000</s> <strong>Rp5.999.000</strong> (20% OFF)<br>
+                                        • iPhone SE <s>Rp3.749.000</s> <strong>Rp2.999.000</strong> (20% OFF)
+                                    </span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Periode Promo:</span>
+                                    <span class="spec-value">1 - 15 Januari 2025</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Syarat & Ketentuan:</span>
+                                    <span class="spec-value">
+                                        • Promo berlaku untuk pembelian minimal Rp5.000.000<br>
+                                        • Cashback akan diberikan dalam bentuk voucher belanja<br>
+                                        • Stok terbatas, berlaku selama persediaan masih ada
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-actions-expanded">
+                                <a href="https://wa.me/6282345678901?text=Halo%20TechShop,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                                </a>
+                                <a href="tel:+6282345678901" class="btn-call">
+                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </section>
+        
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Alamat</h4>
+                            <p>Jl. Promo No. 123, Kota Anda<br>Provinsi Anda (12345)</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Telepon</h4>
+                            <p>+6281234567890</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@promokita.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 08.00 - 20.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <div id="formStatus" class="form-status" style="display: none;"></div>
+                    <form id="contactForm" action="https://formsubmit.co/info@promokita.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://promokita.com/thank-you.html">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <label for="name">Nama Anda</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Pilih subjek</option>
+                                <option value="general">Pertanyaan Umum</option>
+                                <option value="promo">Pertanyaan Promo</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
             </div>
+        </section>
+    </div>
+    
+    <!-- Floating Contact Buttons -->
+    <div class="contact-bar">
+        <a href="https://wa.me/6281234567890" class="contact-btn whatsapp" target="_blank" aria-label="Hubungi via WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+6281234567890" class="contact-btn phone" aria-label="Telepon Kami">
+            <i class="fas fa-phone"></i>
+        </a>
+        <button class="contact-btn order" id="quick-order" aria-label="Pesan Cepat">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/logo-jualan-kita.png" alt="Promo Kita Logo">
+                    <span>Promo Kita</span>
+                </div>
+                <p>Platform khusus untuk menemukan berbagai promo dan diskon menarik dari berbagai merchant terpercaya. Kami berkomitmen untuk memberikan penawaran terbaik dengan harga spesial untuk pelanggan setia kami.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#gallery">Promo</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Berlangganan newsletter kami untuk mendapatkan update promo terbaru langsung ke email Anda.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Alamat email Anda" required>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Berlangganan
+                    </button>
+                </form>
+                
+                <div class="payment-methods">
+                    <h4>Metode Pembayaran</h4>
+                    <div class="payment-icons">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/images/semua-logo-bank-min.png" alt="Payment Methods" class="payment-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 Promo Kita. Semua hak dilindungi. | <a href="#">Kebijakan Privasi</a> | <a href="#">Syarat & Ketentuan</a>
         </div>
     </footer>
+    
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Pesan Cepat</h2>
+            <form id="quickOrderForm" action="https://formsubmit.co/info@promokita.com" method="POST">
+                <input type="hidden" name="_subject" value="Pesan Cepat dari Website">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="quick-name">Nama Anda</label>
+                    <input type="text" id="quick-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-phone">Nomor Telepon</label>
+                    <input type="tel" id="quick-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-item">Produk yang Diminati</label>
+                    <input type="text" id="quick-item" name="product" required>
+                </div>
+                <div class="form-group">
+                    <label for="quick-message">Detail Tambahan</label>
+                    <textarea id="quick-message" name="message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Kirim Permintaan
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <span class="close-search-modal">&times;</span>
+            <input type="text" class="search-modal-input" placeholder="Cari produk promo...">
+            <div class="search-results">
+                <!-- Search results will be dynamically inserted here -->
+                <div class="no-results">Masukkan kata kunci untuk mencari promo</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <span class="close-image-modal">&times;</span>
+            <img src="" alt="Zoomed Image" id="zoomedImage">
+        </div>
+    </div>
+
+    <!-- Audio Elements for Button Sounds -->
+    <audio id="clickSound" src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/audio/click.mp3"></audio>
+    <audio id="hoverSound" src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/audio/hover.mp3"></audio>
+
+    <!-- JavaScript -->
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading-screen').classList.add('hidden');
+                document.getElementById('bgMusic').play().catch(e => console.log("Autoplay prevented:", e));
+            }, 1500);
+        });
+
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            document.getElementById('clickSound').play();
+        });
+
+        // Search Toggle
+        const searchToggle = document.getElementById('searchToggle');
+        const navSearch = document.getElementById('navSearch');
+        
+        searchToggle.addEventListener('click', function() {
+            navSearch.classList.toggle('active');
+            document.getElementById('clickSound').play();
+        });
+
+        // Header Search Button
+        const headerSearchBtn = document.getElementById('headerSearchBtn');
+        headerSearchBtn.addEventListener('click', function() {
+            const searchTerm = document.getElementById('headerSearchInput').value;
+            if (searchTerm.trim() !== '') {
+                // Implement search functionality
+                alert('Anda mencari: ' + searchTerm);
+                document.getElementById('clickSound').play();
+            }
+        });
+
+        // Product Category Filter
+        const categoryBtns = document.querySelectorAll('.product-category-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                
+                // Filter gallery items
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                document.getElementById('clickSound').play();
+            });
+        });
+
+        // Detail Toggle Buttons
+        const detailBtns = document.querySelectorAll('.btn-detail');
+        
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.dataset.target;
+                const targetElement = document.getElementById(targetId);
+                
+                // Toggle active class on detail section
+                targetElement.classList.toggle('active');
+                
+                // Toggle icon rotation
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+                
+                // Change button text
+                if (targetElement.classList.contains('active')) {
+                    this.innerHTML = '<i class="fas fa-chevron-up"></i> Sembunyikan Detail';
+                } else {
+                    this.innerHTML = '<i class="fas fa-chevron-down"></i> Detail Produk';
+                }
+                
+                document.getElementById('clickSound').play();
+            });
+        });
+
+        // Pre-order Toggle Buttons
+        const preorderToggles = document.querySelectorAll('.btn-preorder-toggle');
+        
+        preorderToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const preorderForm = this.nextElementSibling;
+                preorderForm.classList.toggle('active');
+                
+                // Toggle button text
+                if (preorderForm.classList.contains('active')) {
+                    this.innerHTML = '<i class="fas fa-calendar-times"></i> Tutup Form';
+                } else {
+                    this.innerHTML = '<i class="fas fa-calendar-check"></i> Pre-Order';
+                }
+                
+                document.getElementById('clickSound').play();
+            });
+        });
+
+        // Price Variation Selection
+        const priceVariations = document.querySelectorAll('.price-variation');
+        
+        priceVariations.forEach(variation => {
+            variation.addEventListener('click', function() {
+                // Remove active class from all variations in this group
+                const parent = this.parentElement;
+                parent.querySelectorAll('.price-variation').forEach(v => v.classList.remove('active'));
+                
+                // Add active class to clicked variation
+                this.classList.add('active');
+                
+                // Update price display
+                const price = this.dataset.price;
+                const priceElement = this.closest('.gallery-item').querySelector('.gallery-price');
+                const originalPrice = priceElement.querySelector('.original-price');
+                
+                // Format price with thousand separators
+                const formattedPrice = new Intl.NumberFormat('id-ID').format(price);
+                priceElement.firstChild.textContent = 'Rp ' + formattedPrice;
+                
+                // Update total price
+                updateTotalPrice(this.closest('.gallery-item'));
+                
+                document.getElementById('clickSound').play();
+            });
+        });
+
+        // Quantity Controls
+        const quantityControls = document.querySelectorAll('.quantity-controls');
+        
+        quantityControls.forEach(control => {
+            const minusBtn = control.querySelector('.minus');
+            const plusBtn = control.querySelector('.plus');
+            const input = control.querySelector('.quantity-input');
+            
+            minusBtn.addEventListener('click', function() {
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                    updateTotalPrice(this.closest('.gallery-item'));
+                    document.getElementById('clickSound').play();
+                }
+            });
+            
+            plusBtn.addEventListener('click', function() {
+                input.value = parseInt(input.value) + 1;
+                updateTotalPrice(this.closest('.gallery-item'));
+                document.getElementById('clickSound').play();
+            });
+            
+            input.addEventListener('change', function() {
+                if (parseInt(this.value) < 1) this.value = 1;
+                updateTotalPrice(this.closest('.gallery-item'));
+            });
+        });
+
+        // Function to update total price
+        function updateTotalPrice(item) {
+            const activePrice = item.querySelector('.price-variation.active').dataset.price;
+            const quantity = parseInt(item.querySelector('.quantity-input').value);
+            const totalPrice = activePrice * quantity;
+            
+            const formattedTotal = new Intl.NumberFormat('id-ID').format(totalPrice);
+            item.querySelector('.total-price-value').textContent = 'Rp ' + formattedTotal;
+        }
+
+        // Change Main Image in Gallery Carousel
+        function changeMainImage(mainImageId, thumbnail) {
+            const mainImage = document.getElementById(mainImageId);
+            const thumbnails = thumbnail.parentElement.querySelectorAll('.thumbnail');
+            
+            // Remove active class from all thumbnails
+            thumbnails.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked thumbnail
+            thumbnail.classList.add('active');
+            
+            // Change main image source
+            mainImage.src = thumbnail.src;
+            
+            document.getElementById('clickSound').play();
+        }
+
+        // Image Zoom Functionality
+        const galleryImages = document.querySelectorAll('.gallery-main-image');
+        const imageModal = document.getElementById('imageModal');
+        const zoomedImage = document.getElementById('zoomedImage');
+        const closeImageModal = document.querySelector('.close-image-modal');
+        
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                zoomedImage.src = this.src;
+                imageModal.classList.add('show');
+                document.getElementById('clickSound').play();
+            });
+        });
+        
+        closeImageModal.addEventListener('click', function() {
+            imageModal.classList.remove('show');
+            document.getElementById('clickSound').play();
+        });
+
+        // Quick Order Modal
+        const quickOrderBtn = document.getElementById('quick-order');
+        const orderModal = document.getElementById('orderModal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        quickOrderBtn.addEventListener('click', function() {
+            orderModal.classList.add('show');
+            document.getElementById('clickSound').play();
+        });
+        
+        closeModal.addEventListener('click', function() {
+            orderModal.classList.remove('show');
+            document.getElementById('clickSound').play();
+        });
+
+        // Search Modal
+        const headerSearchInput = document.getElementById('headerSearchInput');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearchModal = document.querySelector('.close-search-modal');
+        
+        headerSearchInput.addEventListener('focus', function() {
+            searchModal.classList.add('show');
+        });
+        
+        closeSearchModal.addEventListener('click', function() {
+            searchModal.classList.remove('show');
+            document.getElementById('clickSound').play();
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            formStatus.textContent = 'Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.';
+            formStatus.classList.remove('error');
+            formStatus.classList.add('success');
+            formStatus.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            document.getElementById('clickSound').play();
+            
+            // Hide status after 5 seconds
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        });
+
+        // Quick Order Form Submission
+        const quickOrderForm = document.getElementById('quickOrderForm');
+        
+        quickOrderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            alert('Permintaan pesan cepat Anda telah terkirim! Kami akan segera menghubungi Anda.');
+            orderModal.classList.remove('show');
+            
+            // Reset form
+            this.reset();
+            
+            document.getElementById('clickSound').play();
+        });
+
+        // Button Hover Effects
+        const buttons = document.querySelectorAll('button, .btn, a.btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                document.getElementById('hoverSound').play().catch(e => {});
+            });
+        });
+
+        // Lazy Loading Images
+        const lazyImages = document.querySelectorAll('.lazy');
+        
+        const lazyLoad = function() {
+            lazyImages.forEach(img => {
+                if (img.getBoundingClientRect().top < window.innerHeight && img.getBoundingClientRect().bottom > 0) {
+                    img.classList.add('loaded');
+                }
+            });
+        };
+        
+        window.addEventListener('load', lazyLoad);
+        window.addEventListener('scroll', lazyLoad);
+        window.addEventListener('resize', lazyLoad);
+    </script>
 </body>
 </html>
