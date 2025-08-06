@@ -1988,6 +1988,168 @@
         .lazy.loaded {
             opacity: 1;
         }
+
+        /* New styles for additional elements */
+        .key-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .feature-item i {
+            color: var(--success);
+        }
+
+        .compatibility-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .compatibility-badge {
+            background: rgba(168, 218, 220, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .compatibility-badge i {
+            color: var(--dark);
+        }
+
+        .testimonial-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .testimonial {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-content {
+            flex: 1;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .device-showcase {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .device-frame {
+            position: relative;
+            width: 200px;
+            height: auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .device-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .device-frame span {
+            display: block;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .gallery-actions-expanded {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-demo-expanded {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--gold);
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-demo-expanded:hover {
+            background-color: #ffc233;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 209, 102, 0.3);
+        }
+
+        .btn-demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: var(--gold);
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-demo:hover {
+            background-color: #ffc233;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 209, 102, 0.3);
+        }
         
         /* Responsive */
         @media (max-width: 1200px) {
@@ -2194,6 +2356,10 @@
             .modal-content {
                 padding: 3rem;
             }
+
+            .key-features {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -2266,6 +2432,10 @@
             .modal-content {
                 padding: 2.5rem 2rem;
             }
+
+            .device-frame {
+                width: 150px;
+            }
         }
         
         @media (max-width: 400px) {
@@ -2292,6 +2462,10 @@
             .thumbnail {
                 width: 70px;
                 height: 70px;
+            }
+
+            .device-frame {
+                width: 120px;
             }
         }
     </style>
@@ -2395,7 +2569,7 @@
                         <span class="gallery-badge seller">Developer: Lentera Karya Situbondo</span>
                         <span class="gallery-badge promo">Super Deal</span>
                         <div class="gallery-image-container">
-                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Paket Aplikasi Web Premium" class="gallery-image lazy" loading="lazy">
+                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Paket Aplikasi Web Premium" class="gallery-image lazy" loading="lazy">
                         </div>
                         <div class="gallery-details">
                             <h3 class="gallery-title">Paket Lengkap Aplikasi Web HTML</h3>
@@ -2447,22 +2621,22 @@
                                 <button class="btn-detail" data-target="details-LDW-2025-8001">
                                     <i class="fas fa-chevron-down"></i> Detail Produk
                                 </button>
-                                <button class="btn-order">
+                                <a href="https://wa.me/6285647709114?text=Halo%20ANEKAMARKET,%20saya%20tertarik%20dengan%20Paket%20Aplikasi%20Web%20HTML%20kode%20LDW-2025-8001" class="btn-order" target="_blank">
                                     <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </button>
-                                <button class="btn-demo">
+                                </a>
+                                <a href="https://lks-88.github.io/transaksi/" class="btn-demo" target="_blank">
                                     <i class="fas fa-eye"></i> Demo Langsung
-                                </button>
+                                </a>
                             </div>
                             
                             <div id="details-LDW-2025-8001" class="gallery-detail-expanded">
                                 <div class="gallery-carousel">
-                                    <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-2a.png" alt="Paket Aplikasi Web Premium" class="gallery-main-image lazy" loading="lazy" id="main-image-web-bundle">
+                                    <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-2a.png" alt="Paket Aplikasi Web Premium" class="gallery-main-image lazy" loading="lazy" id="main-image-web-bundle">
                                     <div class="gallery-thumbnails">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-1b.png" alt="Aplikasi Kasir Web" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-web-bundle">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-1a.png" alt="Sistem Pembukuan Web" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-1.png" alt="Aplikasi Restoran Web" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
-                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Tampilan Responsif" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1b.png" alt="Aplikasi Kasir Web" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-web-bundle">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1a.png" alt="Sistem Pembukuan Web" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1.png" alt="Aplikasi Restoran Web" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Tampilan Responsif" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-bundle">
                                     </div>
                                 </div>
                                 
@@ -2529,14 +2703,14 @@
                                     <div class="testimonial-section">
                                         <h4>Apa Kata Pelanggan Kami:</h4>
                                         <div class="testimonial">
-                                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/galeri/foto2.jpeg" alt="Testimonial" class="testimonial-avatar">
+                                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/galeri/foto2.jpeg" alt="Testimonial" class="testimonial-avatar">
                                             <div class="testimonial-content">
                                                 <p>"Aplikasi web kasirnya sangat mudah digunakan di tablet toko saya. Tidak perlu install, buka langsung bisa dipakai! Bahkan karyawan yang kurang melek teknologi pun bisa mengoperasikannya."</p>
                                                 <span class="testimonial-author">- Ibu fatma, Pemilik Toko Kelontong</span>
                                             </div>
                                         </div>
                                         <div class="testimonial">
-                                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/galeri/foto1.jpeg" alt="Testimonial" class="testimonial-avatar">
+                                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/galeri/foto1.jpeg" alt="Testimonial" class="testimonial-avatar">
                                             <div class="testimonial-content">
                                                 <p>"Saya bisa cek laporan penjualan cafe dari HP saat di rumah. Aplikasinya ringan tapi fiturnya lengkap. Developer-nya juga responsif saat saya tanya cara backup data."</p>
                                                 <span class="testimonial-author">- Pak Sanusi, Pemilik Cafe Budaya</span>
@@ -2546,11 +2720,11 @@
                                 </div>
                                 
                                 <div class="gallery-actions-expanded">
-                                    <a href="https://wa.me/6281336150986?text=Halo%20Lentera%20Karya%20Situbondo,%20saya%20tertarik%20dengan%20Paket%20Aplikasi%20Web%20HTML%20Anda%20kode%20LDW-2025-8001" class="btn-whatsapp" target="_blank">
+                                    <a href="https://wa.me/6285647709114?text=Halo%20ANEKAMARKET,%20saya%20tertarik%20dengan%20Paket%20Aplikasi%20Web%20HTML%20kode%20LDW-2025-8001" class="btn-whatsapp" target="_blank">
                                         <i class="fab fa-whatsapp"></i> Konsultasi via WhatsApp
                                     </a>
-                                    <a href="demo-web-apps.html" class="btn-demo-expanded">
-                                        <i class="fas fa-laptop-code"></i> Coba Demo Langsung Di Website ANEKAMARKET
+                                    <a href="https://lks-88.github.io/transaksi/" class="btn-demo-expanded" target="_blank">
+                                        <i class="fas fa-laptop-code"></i> Coba Demo Langsung
                                     </a>
                                 </div>
                             </div>
@@ -2562,7 +2736,7 @@
                         <span class="gallery-badge seller">Developer: Lentera Karya Situbondo</span>
                         <span class="gallery-badge new">Baru!</span>
                         <div class="gallery-image-container">
-                            <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/web-cashier.jpg" alt="Aplikasi Kasir Web HTML" class="gallery-image lazy" loading="lazy">
+                            <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1.png" alt="Aplikasi Kasir Web HTML" class="gallery-image lazy" loading="lazy">
                         </div>
                         <div class="gallery-details">
                             <h3 class="gallery-title">Aplikasi Kasir Web HTML</h3>
@@ -2601,22 +2775,22 @@
                                 <button class="btn-detail" data-target="details-LDW-2025-8002">
                                     <i class="fas fa-chevron-down"></i> Detail Produk
                                 </button>
-                                <button class="btn-order">
+                                <a href="https://wa.me/6285647709114?text=Halo%20ANEKAMARKET,%20saya%20tertarik%20dengan%20Aplikasi%20Kasir%20Web%20HTML%20kode%20LDW-2025-8002" class="btn-order" target="_blank">
                                     <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                                </button>
-                                <button class="btn-demo">
-                                    <i class="fas fa-eye"></i> Demo Langsung Di Website ANEKAMARKET
-                                </button>
+                                </a>
+                                <a href="https://lks-88.github.io/transaksi/" class="btn-demo" target="_blank">
+                                    <i class="fas fa-eye"></i> Demo Langsung
+                                </a>
                             </div>
                             
                             <div id="details-LDW-2025-8002" class="gallery-detail-expanded">
                                 <div class="gallery-carousel">
-                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/web-cashier.jpg" alt="Aplikasi Kasir Web HTML" class="gallery-main-image lazy" loading="lazy" id="main-image-web-cashier">
+                                    <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1.png" alt="Aplikasi Kasir Web HTML" class="gallery-main-image lazy" loading="lazy" id="main-image-web-cashier">
                                     <div class="gallery-thumbnails">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-2a.png" alt="Tampilan Mobile" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-web-cashier">
-                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Cetak Struk" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-1b.png" alt="Laporan Penjualan" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
-                                        <img src="https://github.com/LKS-88/promo-anekamarket/blob/main/assets/images/produk-1.png" alt="Manajemen Produk" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-2a.png" alt="Tampilan Mobile" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-web-cashier">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/Aplikasi%20Elegan%20%26%20Profesional.png" alt="Cetak Struk" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1b.png" alt="Laporan Penjualan" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
+                                        <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk2.png" alt="Manajemen Produk" class="thumbnail lazy" loading="lazy" data-main-image="main-image-web-cashier">
                                     </div>
                                 </div>
                                 
@@ -2689,15 +2863,15 @@
                                         <h4>Tampilan di Semua Perangkat:</h4>
                                         <div class="device-showcase">
                                             <div class="device-frame desktop">
-                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/produk-1a.png" alt="Desktop View">
+                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-1a.png" alt="Desktop View">
                                                 <span>Desktop - Tampilan Lengkap</span>
                                             </div>
                                             <div class="device-frame tablet">
-                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/produk2.png" alt="Tablet View">
+                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk2.png" alt="Tablet View">
                                                 <span>Tablet - Optimasi Touchscreen</span>
                                             </div>
                                             <div class="device-frame mobile">
-                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/refs/heads/main/assets/images/produk-2b.png" alt="Mobile View">
+                                                <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/images/produk-2b.png" alt="Mobile View">
                                                 <span>Smartphone - Ringkas & Efisien</span>
                                             </div>
                                         </div>
@@ -2705,11 +2879,11 @@
                                 </div>
                                 
                                 <div class="gallery-actions-expanded">
-                                    <a href="https://wa.me/6281336150986?text=Halo%20Lentera%20Karya%20Situbondo,%20saya%20tertarik%20dengan%20Aplikasi%20Kasir%20Web%20HTML%20Anda%20kode%20LDW-2025-8002" class="btn-whatsapp" target="_blank">
+                                    <a href="https://wa.me/6285647709114?text=Halo%20ANEKAMARKET,%20saya%20tertarik%20dengan%20Aplikasi%20Kasir%20Web%20HTML%20kode%20LDW-2025-8002" class="btn-whatsapp" target="_blank">
                                         <i class="fab fa-whatsapp"></i> Chat via WhatsApp
                                     </a>
-                                    <a href="demo-web-cashier.html" class="btn-demo-expanded" target="_blank">
-                                        <i class="fas fa-laptop-code"></i> Coba Demo Sekarang di website ANEKAMARKET
+                                    <a href="https://lks-88.github.io/transaksi/" class="btn-demo-expanded" target="_blank">
+                                        <i class="fas fa-laptop-code"></i> Coba Demo Sekarang
                                     </a>
                                 </div>
                             </div>
@@ -2755,7 +2929,7 @@
                                 <div class="contact-form">
                                     <h3>Kirim Pesan</h3>
                                     <div id="formStatus" class="form-status" style="display: none;"></div>
-                                    <form id="contactForm" action="https://formsubmit.co/info@promokita.com" method="POST">
+                                    <form id="contactForm" action="https://formsubmit.co/lenterakaryasitubondo@gmail.com" method="POST">
                                         <input type="hidden" name="_captcha" value="false">
                                         <input type="hidden" name="_next" value="https://promokita.com/thank-you.html">
                                         <input type="hidden" name="_template" value="table">
@@ -2832,7 +3006,7 @@
                 <h3>Newsletter</h3>
                 <p>Berlangganan newsletter kami untuk mendapatkan update promo terbaru langsung ke email Anda.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder=Lenterakaryasitubondo@gmail.com" required>
+                    <input type="email" placeholder="Masukkan email Anda" required>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-envelope"></i> Berlangganan
                     </button>
@@ -2841,7 +3015,7 @@
                 <div class="payment-methods">
                     <h4>Metode Pembayaran</h4>
                     <div class="payment-icons">
-                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/images/semua-logo-bank-min.png" alt="Payment Methods" class="payment-icon">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/images/semua-logo-bank-min.png" alt="Payment Methods" class="payment-icon">
                     </div>
                 </div>
             </div>
@@ -2857,7 +3031,7 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h2>Pesan Cepat</h2>
-            <form id="quickOrderForm" action="https://formsubmit.co/info@promokita.com" method="POST">
+            <form id="quickOrderForm" action="https://formsubmit.co/lenterakaryasitubondo@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Pesan Cepat dari Website">
                 <input type="hidden" name="_captcha" value="false">
                 <div class="form-group">
@@ -3222,6 +3396,17 @@
         window.addEventListener('load', lazyLoad);
         window.addEventListener('scroll', lazyLoad);
         window.addEventListener('resize', lazyLoad);
+
+        // Initialize thumbnail click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const mainImageId = this.dataset.mainImage;
+                    changeMainImage(mainImageId, this);
+                });
+            });
+        });
     </script>
 </body>
 </html>
