@@ -2375,479 +2375,402 @@
             <div class="gallery-intro">
                 <p>Jelajahi koleksi promo menarik dengan diskon spesial. Klik "Detail" untuk melihat lebih banyak informasi tentang promo yang tersedia.</p>
                 
-                <!-- Product Categories -->
-                <div class="product-categories">
-                    <button class="product-category-btn active" data-category="all">Semua Kategori</button>
-                    <button class="product-category-btn" data-category="food">Makanan & Minuman</button>
-                    <button class="product-category-btn" data-category="snack">Kue & Cemilan</button>
-                    <button class="product-category-btn" data-category="electronics">Elektronik</button>
-                    <button class="product-category-btn" data-category="fashion">Fashion</button>
-                    <button class="product-category-btn" data-category="home">Perlengkapan Rumah</button>
+                <!-- New Product Categories -->
+<div class="product-categories">
+    <button class="product-category-btn active" data-category="all">Semua Kategori</button>
+    <button class="product-category-btn" data-category="food">Makanan & Minuman</button>
+    <button class="product-category-btn" data-category="snack">Kue & Cemilan</button>
+    <button class="product-category-btn" data-category="construction">Alat Konstruksi</button>
+    <button class="product-category-btn" data-category="office">Alat Kantor</button>
+    <button class="product-category-btn" data-category="household">Alat Rumah Tangga</button>
+    <button class="product-category-btn" data-category="software">Software Aplikasi</button>
+    <button class="product-category-btn" data-category="electronics">Elektronik</button>
+    <button class="product-category-btn" data-category="fishery">Perikanan</button>
+    <button class="product-category-btn" data-category="livestock">Peternakan</button>
+    <button class="product-category-btn" data-category="agriculture">Pertanian</button>
+</div>
+
+<div class="category-tabs">
+    <button class="category-btn active" data-type="all">Semua</button>
+    <button class="category-btn" data-type="rental">Sewa</button>
+    <button class="category-btn" data-type="promo">Promosi</button>
+</div>
+
+<div class="gallery-grid">
+    <!-- GALLERY ITEM - SOFTWARE PRODUCT -->
+    <div class="gallery-item" data-category="software" data-type="promo">
+        <a href="#" class="gallery-badge seller">Gerai: Lentera Digital Solutions</a>
+        <span class="gallery-badge promo">Promo Spesial</span>
+        <div class="gallery-image-container">
+            <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/software-bundle.jpg" alt="Paket Aplikasi Bisnis Profesional" class="gallery-image lazy" loading="lazy">
+        </div>
+        <div class="gallery-details">
+            <h3 class="gallery-title">Paket Lengkap Aplikasi Bisnis Profesional</h3>
+            <div class="gallery-meta">
+                <span class="gallery-code">Kode: LDS-2025-5001</span>
+                <span class="gallery-seller"><i class="fas fa-store"></i> Lentera Digital Solutions</span>
+            </div>
+            <p class="gallery-price">
+                Rp 499.000
+                <span class="original-price">Rp 699.000</span>
+                <span class="discount">28% OFF</span>
+            </p>
+            
+            <!-- Price Variations -->
+            <div class="price-variations">
+                <div class="price-variation active" data-price="499000">
+                    <span class="price-variation-name">Paket Lengkap (7 Aplikasi)</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 699.000</span>
+                        <span class="discounted-price">Rp 499.000</span>
+                    </span>
+                </div>
+                <div class="price-variation" data-price="350000">
+                    <span class="price-variation-name">Aplikasi Kasir</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 450.000</span>
+                        <span class="discounted-price">Rp 350.000</span>
+                    </span>
+                </div>
+                <div class="price-variation" data-price="375000">
+                    <span class="price-variation-name">Aplikasi Pembukuan</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 500.000</span>
+                        <span class="discounted-price">Rp 375.000</span>
+                    </span>
+                </div>
+                <div class="price-variation" data-price="400000">
+                    <span class="price-variation-name">Aplikasi Cafe/Restoran</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 550.000</span>
+                        <span class="discounted-price">Rp 400.000</span>
+                    </span>
                 </div>
             </div>
             
-            <div class="gallery-grid">
-                <!-- GALLERY ITEM 1 - FOOD PROMO -->
-                <div class="gallery-item" data-category="food" data-type="promo">
-                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: Mochi UMA</a>
-                    <span class="gallery-badge promo">Promo Spesial</span>
-                    <div class="gallery-image-container">
-                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/kue-ulink.jpeg" alt="Promo Kue Mochi UMA" class="gallery-image lazy" loading="lazy">
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <span class="quantity-label">Jumlah Lisensi:</span>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <div class="unit-selector">
+                    <select class="unit-select">
+                        <option value="device" selected>perangkat</option>
+                        <option value="business">bisnis</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Total Price -->
+            <div class="total-price">
+                <span class="total-price-label">Total Harga:</span>
+                <span class="total-price-value">Rp 499.000</span>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="gallery-actions">
+                <button class="btn-detail" data-target="details-LDS-2025-5001">
+                    <i class="fas fa-chevron-down"></i> Detail Produk
+                </button>
+                <button class="btn-order">
+                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                </button>
+                <button class="btn-preorder-toggle">
+                    <i class="fas fa-calendar-check"></i> Konsultasi Gratis
+                </button>
+            </div>
+            
+            <!-- Consultation Form -->
+            <div class="preorder-form">
+                <div class="preorder-title">
+                    <i class="fas fa-headset"></i>
+                    <span>Form Konsultasi Gratis</span>
+                </div>
+                <input type="text" class="preorder-input" placeholder="Masukkan nomor WhatsApp Anda">
+                <p class="preorder-note">
+                    * Tim kami akan menghubungi Anda untuk konsultasi gratis mengenai solusi terbaik untuk bisnis Anda.
+                </p>
+                <button class="btn-preorder">
+                    <i class="fas fa-paper-plane"></i> Request Konsultasi
+                </button>
+            </div>
+            
+            <div id="details-LDS-2025-5001" class="gallery-detail-expanded">
+                <div class="gallery-carousel">
+                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/software-bundle.jpg" alt="Paket Aplikasi Bisnis Profesional" class="gallery-main-image lazy" loading="lazy" id="main-image-software">
+                    <div class="gallery-thumbnails">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/cashier-app.jpg" alt="Aplikasi Kasir" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-software">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/accounting-app.jpg" alt="Aplikasi Pembukuan" class="thumbnail lazy" loading="lazy" data-main-image="main-image-software">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-app.jpg" alt="Aplikasi Cafe/Restoran" class="thumbnail lazy" loading="lazy" data-main-image="main-image-software">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/website-template.jpg" alt="Website Profesional" class="thumbnail lazy" loading="lazy" data-main-image="main-image-software">
                     </div>
-                    <div class="gallery-details">
-                        <h3 class="gallery-title">Promo Aneka Kue Lezat Mochi Uma</h3>
-                        <div class="gallery-meta">
-                            <span class="gallery-code">Kode: MCU-2025-2830</span>
-                            <span class="gallery-seller"><i class="fas fa-store"></i> Mochi UMA</span>
+                </div>
+                
+                <div class="gallery-content">
+                    <p class="gallery-description">
+                        <strong>PROMO TERBATAS!</strong> Lentera Digital Solutions menghadirkan paket lengkap aplikasi bisnis profesional dengan desain elegan dan fitur lengkap. Solusi komprehensif kami mencakup aplikasi kasir, pembukuan, absensi, manajemen cafe/restoran, website profesional, sistem karcis, dan manajemen penginapan. Setiap aplikasi dirancang dengan antarmuka modern yang mudah digunakan, dilengkapi dengan fitur keamanan data canggih dan kemampuan pencadangan otomatis. Nikmati diskon spesial hingga 28% untuk pembelian selama periode promo ini!
+                    </p>
+                    
+                    <div class="gallery-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Kode Produk:</span>
+                            <span class="spec-value">LDS-2025-5001</span>
                         </div>
-                        <p class="gallery-price">
-                            Rp 10.000 <span class="original-price">Rp 15.000</span>
-                            <span class="discount">33%</span>
-                        </p>
-                        
-                        <!-- Price Variations -->
-                        <div class="price-variations">
-                            <div class="price-variation active" data-price="10000">
-                                <span class="price-variation-name">Pancake Durian</span>
-                                <span class="price-variation-value">Rp 10.000</span>
-                            </div>
-                            <div class="price-variation" data-price="10000">
-                                <span class="price-variation-name">Mochi</span>
-                                <span class="price-variation-value">Rp 10.000 (3pcs)</span>
-                            </div>
-                            <div class="price-variation" data-price="10000">
-                                <span class="price-variation-name">Cireng Ayam Suwir</span>
-                                <span class="price-variation-value">Rp 10.000</span>
-                            </div>
-                            <div class="price-variation" data-price="10000">
-                                <span class="price-variation-name">Corndog Coklat</span>
-                                <span class="price-variation-value">Rp 10.000 (isi 3)</span>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Perusahaan:</span>
+                            <span class="spec-value">Lentera Digital Solutions</span>
                         </div>
-                        
-                        <!-- Quantity Selector -->
-                        <div class="quantity-selector">
-                            <span class="quantity-label">Jumlah:</span>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" class="quantity-input" value="1" min="1">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                            <div class="unit-selector">
-                                <select class="unit-select">
-                                    <option value="pcs" selected>pcs</option>
-                                    <option value="pack">pack</option>
-                                    <option value="set">set</option>
-                                    <option value="lusin">lusin</option>
-                                </select>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Daftar Aplikasi:</span>
+                            <span class="spec-value">
+                                • Aplikasi Kasir Modern<br>
+                                • Sistem Pembukuan & Nota<br>
+                                • Aplikasi Absensi Karyawan<br>
+                                • Sistem Penjualan Cafe/Restoran<br>
+                                • Template Website Profesional<br>
+                                • Sistem Manajemen Karcis<br>
+                                • Aplikasi Penginapan/Hotel
+                            </span>
                         </div>
-                        
-                        <!-- Total Price -->
-                        <div class="total-price">
-                            <span class="total-price-label">Total Harga:</span>
-                            <span class="total-price-value">Rp 10.000</span>
+                        <div class="spec-item">
+                            <span class="spec-label">Fitur Unggulan:</span>
+                            <span class="spec-value">
+                                • Antarmuka elegan dan profesional<br>
+                                • Penyimpanan data terenkripsi<br>
+                                • Backup & restore otomatis<br>
+                                • Laporan transaksi & keuangan<br>
+                                • Cetak struk & invoice<br>
+                                • Analisis laba rugi<br>
+                                • Multi-user support
+                            </span>
                         </div>
-                        
-                        <!-- Action Buttons -->
-                        <div class="gallery-actions">
-                            <button class="btn-detail" data-target="details-MCU-2025-2830">
-                                <i class="fas fa-chevron-down"></i> Detail Produk
-                            </button>
-                            <button class="btn-order">
-                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                            </button>
-                            <button class="btn-preorder-toggle">
-                                <i class="fas fa-calendar-check"></i> Pre-Order
-                            </button>
+                        <div class="spec-item">
+                            <span class="spec-label">Kompatibilitas:</span>
+                            <span class="spec-value">Windows 10/11, macOS, Linux</span>
                         </div>
-                        
-                        <!-- Pre-order Form -->
-                        <div class="preorder-form">
-                            <div class="preorder-title">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Form Uang Muka (DP)</span>
-                            </div>
-                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
-                            <p class="preorder-note">
-                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
-                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
-                            </p>
-                            <button class="btn-preorder">
-                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
-                            </button>
+                        <div class="spec-item">
+                            <span class="spec-label">Daftar Harga Promo:</span>
+                            <span class="spec-value">
+                                • Paket Lengkap (7 Aplikasi) <s>Rp699.000</s> <strong>Rp499.000</strong><br>
+                                • Aplikasi Kasir <s>Rp450.000</s> <strong>Rp350.000</strong><br>
+                                • Aplikasi Pembukuan <s>Rp500.000</s> <strong>Rp375.000</strong><br>
+                                • Aplikasi Cafe/Restoran <s>Rp550.000</s> <strong>Rp400.000</strong>
+                            </span>
                         </div>
-                        
-                        <div id="details-MCU-2025-2830" class="gallery-detail-expanded">
-                            <div class="gallery-carousel">
-                                <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/kue-ulink.jpeg" alt="Promo Produk Mochi UMA" class="gallery-main-image lazy" loading="lazy" id="main-image-1">
-                                <div class="gallery-thumbnails">
-                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/pancake-durian.jpeg" alt="Promo Pancake Durian" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
-                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/mochi.jpeg" alt="Promo Aneka Mochi" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
-                                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/refs/heads/main/assets/produk/mochi-uma/cireng.jpeg" alt="Promo Cireng Ayam Suwir" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-1', this)">
-                                </div>
-                            </div>
-                            
-                            <p class="gallery-description">
-                                <strong>PROMO SPESIAL!</strong> Mochi UMA menghadirkan paket promo aneka kue lezat dengan harga spesial. Nikmati berbagai pilihan kue premium dengan diskon menarik untuk waktu terbatas. Setiap produk dibuat dengan bahan pilihan dan teknik khusus untuk menjamin cita rasa autentik. Jangan lewatkan kesempatan ini untuk menikmati kue berkualitas dengan harga terjangkau!
-                            </p>
-                            
-                            <div class="gallery-specs">
-                                <div class="spec-item">
-                                    <span class="spec-label">Kode Promo:</span>
-                                    <span class="spec-value">MCU-2025-2830</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Nama UMKM:</span>
-                                    <span class="spec-value">Mochi UMA</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Pemilik:</span>
-                                    <span class="spec-value">ULink</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Alamat:</span>
-                                    <span class="spec-value">Jl. Wijaya Kusuma Samping Bidan Ika</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Kontak:</span>
-                                    <span class="spec-value">089679013099 | nurilaneeh@gmail.com</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Media Sosial:</span>
-                                    <span class="spec-value">TikTok @mochi.uma3</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Daftar Promo:</span>
-                                    <span class="spec-value">
-                                        • Pancake Durian hanya Rp10.000<br>
-                                        • Mochi 3pcs Rp10.000<br>
-                                        • Cireng Ayam Suwir Rp10.000<br>
-                                        • Corndog Coklat isi 3 Rp10.000
-                                    </span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Periode Promo:</span>
-                                    <span class="spec-value">Sampai 31 Agustus 2025</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Catatan:</span>
-                                    <span class="spec-value">Harga bisa berubah sewaktu-waktu</span>
-                                </div>
-                            </div>
-                            
-                            <div class="gallery-actions-expanded">
-                                <a href="https://wa.me/6289679013099?text=Halo%20Mochi%20UMA,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                                </a>
-                                <a href="tel:+6289679013099" class="btn-call">
-                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
-                                </a>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Periode Promo:</span>
+                            <span class="spec-value">1 Agustus - 31 September 2025</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Bonus:</span>
+                            <span class="spec-value">
+                                • Gratis panduan penggunaan<br>
+                                • Video tutorial premium<br>
+                                • Update gratis 1 tahun<br>
+                                • Support teknis via WhatsApp
+                            </span>
                         </div>
                     </div>
                 </div>
+                
+                <div class="gallery-actions-expanded">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Lentera%20Digital%20Solutions,%20saya%20tertarik%20dengan%20paket%20aplikasi%20bisnis%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                    </a>
+                    <a href="tel:+6281234567890" class="btn-call">
+                        <i class="fas fa-phone-alt"></i> Telepon Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                <!-- GALLERY ITEM 2 - FASHION PROMO -->
-                <div class="gallery-item" data-category="fashion" data-type="promo">
-                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: FashionKu</a>
-                    <span class="gallery-badge promo">Diskon 50%</span>
-                    <div class="gallery-image-container">
-                        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Fashion" class="gallery-image lazy" loading="lazy">
+    <!-- GALLERY ITEM - RESTAURANT SOFTWARE -->
+    <div class="gallery-item" data-category="software" data-type="promo">
+        <a href="#" class="gallery-badge seller">Gerai: Lentera Digital Solutions</a>
+        <span class="gallery-badge promo">Best Seller</span>
+        <div class="gallery-image-container">
+            <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-app.jpg" alt="Aplikasi Cafe & Restoran Premium" class="gallery-image lazy" loading="lazy">
+        </div>
+        <div class="gallery-details">
+            <h3 class="gallery-title">Aplikasi Cafe & Restoran Premium</h3>
+            <div class="gallery-meta">
+                <span class="gallery-code">Kode: LDS-2025-5002</span>
+                <span class="gallery-seller"><i class="fas fa-store"></i> Lentera Digital Solutions</span>
+            </div>
+            <p class="gallery-price">
+                Rp 400.000
+                <span class="original-price">Rp 550.000</span>
+                <span class="discount">27% OFF</span>
+            </p>
+            
+            <!-- Price Variations -->
+            <div class="price-variations">
+                <div class="price-variation active" data-price="400000">
+                    <span class="price-variation-name">Standard License</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 550.000</span>
+                        <span class="discounted-price">Rp 400.000</span>
+                    </span>
+                </div>
+                <div class="price-variation" data-price="700000">
+                    <span class="price-variation-name">Business License (2 device)</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 950.000</span>
+                        <span class="discounted-price">Rp 700.000</span>
+                    </span>
+                </div>
+                <div class="price-variation" data-price="900000">
+                    <span class="price-variation-name">Enterprise License (5 device)</span>
+                    <span class="price-variation-value">
+                        <span class="original-price">Rp 1.250.000</span>
+                        <span class="discounted-price">Rp 900.000</span>
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Quantity Selector -->
+            <div class="quantity-selector">
+                <span class="quantity-label">Jumlah Lisensi:</span>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <div class="unit-selector">
+                    <select class="unit-select">
+                        <option value="device" selected>perangkat</option>
+                        <option value="outlet">outlet</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Total Price -->
+            <div class="total-price">
+                <span class="total-price-label">Total Harga:</span>
+                <span class="total-price-value">Rp 400.000</span>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="gallery-actions">
+                <button class="btn-detail" data-target="details-LDS-2025-5002">
+                    <i class="fas fa-chevron-down"></i> Detail Produk
+                </button>
+                <button class="btn-order">
+                    <i class="fas fa-shopping-cart"></i> Pesan Sekarang
+                </button>
+                <button class="btn-preorder-toggle">
+                    <i class="fas fa-calendar-check"></i> Demo Gratis
+                </button>
+            </div>
+            
+            <!-- Demo Form -->
+            <div class="preorder-form">
+                <div class="preorder-title">
+                    <i class="fas fa-laptop"></i>
+                    <span>Request Demo Gratis</span>
+                </div>
+                <input type="text" class="preorder-input" placeholder="Masukkan email Anda">
+                <p class="preorder-note">
+                    * Kami akan mengirimkan link demo aplikasi beserta panduan penggunaannya.
+                </p>
+                <button class="btn-preorder">
+                    <i class="fas fa-paper-plane"></i> Request Demo
+                </button>
+            </div>
+            
+            <div id="details-LDS-2025-5002" class="gallery-detail-expanded">
+                <div class="gallery-carousel">
+                    <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-app.jpg" alt="Aplikasi Cafe & Restoran Premium" class="gallery-main-image lazy" loading="lazy" id="main-image-resto">
+                    <div class="gallery-thumbnails">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-dashboard.jpg" alt="Dashboard Aplikasi" class="thumbnail active lazy" loading="lazy" data-main-image="main-image-resto">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-order.jpg" alt="Menu Order" class="thumbnail lazy" loading="lazy" data-main-image="main-image-resto">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-report.jpg" alt="Laporan Penjualan" class="thumbnail lazy" loading="lazy" data-main-image="main-image-resto">
+                        <img src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/produk/software/resto-inventory.jpg" alt="Manajemen Stok" class="thumbnail lazy" loading="lazy" data-main-image="main-image-resto">
                     </div>
-                    <div class="gallery-details">
-                        <h3 class="gallery-title">Promo Akhir Tahun FashionKu</h3>
-                        <div class="gallery-meta">
-                            <span class="gallery-code">Kode: FSH-2025-3348</span>
-                            <span class="gallery-seller"><i class="fas fa-store"></i> FashionKu</span>
+                </div>
+                
+                <div class="gallery-content">
+                    <p class="gallery-description">
+                        <strong>SOLUSI TERBAIK UNTUK BISNIS F&B ANDA!</strong> Aplikasi Cafe & Restoran Premium dari Lentera Digital Solutions dirancang khusus untuk memudahkan operasional bisnis kuliner Anda. Dengan antarmuka yang elegan dan intuitif, aplikasi ini menyediakan fitur lengkap mulai dari manajemen menu, pemesanan meja, pembayaran, hingga laporan keuangan. Sistem ini juga dilengkapi dengan fitur manajemen stok otomatis, analisis penjualan, dan kemampuan cetak struk profesional. Dapatkan diskon 27% untuk pembelian selama periode promo ini!
+                    </p>
+                    
+                    <div class="gallery-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Kode Produk:</span>
+                            <span class="spec-value">LDS-2025-5002</span>
                         </div>
-                        <p class="gallery-price">
-                            Rp 99.000 <span class="original-price">Rp 199.000</span>
-                            <span class="discount">50%</span>
-                        </p>
-                        
-                        <!-- Price Variations -->
-                        <div class="price-variations">
-                            <div class="price-variation active" data-price="99000">
-                                <span class="price-variation-name">Kaos Polos</span>
-                                <span class="price-variation-value">Rp 99.000</span>
-                            </div>
-                            <div class="price-variation" data-price="149000">
-                                <span class="price-variation-name">Kemeja</span>
-                                <span class="price-variation-value">Rp 149.000</span>
-                            </div>
-                            <div class="price-variation" data-price="199000">
-                                <span class="price-variation-name">Jeans</span>
-                                <span class="price-variation-value">Rp 199.000</span>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Fitur Utama:</span>
+                            <span class="spec-value">
+                                • Manajemen menu & kategori<br>
+                                • Pemesanan meja & takeaway<br>
+                                • Pembayaran multi-metode<br>
+                                • Manajemen stok otomatis<br>
+                                • Laporan penjualan harian/mingguan/bulanan<br>
+                                • Analisis produk terlaris<br>
+                                • Cetak struk profesional<br>
+                                • Multi-user dengan level akses berbeda
+                            </span>
                         </div>
-                        
-                        <!-- Quantity Selector -->
-                        <div class="quantity-selector">
-                            <span class="quantity-label">Jumlah:</span>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" class="quantity-input" value="1" min="1">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                            <div class="unit-selector">
-                                <select class="unit-select">
-                                    <option value="pcs" selected>pcs</option>
-                                    <option value="lusin">lusin</option>
-                                </select>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Keunggulan:</span>
+                            <span class="spec-value">
+                                • Desain antarmuka premium<br>
+                                • Sistem keamanan data terenkripsi<br>
+                                • Backup otomatis harian<br>
+                                • Notifikasi stok hampir habis<br>
+                                • Kompatibel dengan berbagai printer struk<br>
+                                • Tanpa biaya bulanan/tahunan<br>
+                                • Update gratis 1 tahun
+                            </span>
                         </div>
-                        
-                        <!-- Total Price -->
-                        <div class="total-price">
-                            <span class="total-price-label">Total Harga:</span>
-                            <span class="total-price-value">Rp 99.000</span>
+                        <div class="spec-item">
+                            <span class="spec-label">Spesifikasi Teknis:</span>
+                            <span class="spec-value">
+                                • Sistem: Offline (tidak perlu internet)<br>
+                                • Database: Terenkripsi lokal<br>
+                                • OS Support: Windows 10/11, macOS<br>
+                                • Minimal Storage: 500MB<br>
+                                • RAM: 4GB (recommended)
+                            </span>
                         </div>
-                        
-                        <!-- Action Buttons -->
-                        <div class="gallery-actions">
-                            <button class="btn-detail" data-target="details-FSH-2025-3348">
-                                <i class="fas fa-chevron-down"></i> Detail Produk
-                            </button>
-                            <button class="btn-order">
-                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                            </button>
-                            <button class="btn-preorder-toggle">
-                                <i class="fas fa-calendar-check"></i> Pre-Order
-                            </button>
+                        <div class="spec-item">
+                            <span class="spec-label">Paket Harga:</span>
+                            <span class="spec-value">
+                                • Standard License (1 device) <s>Rp550.000</s> <strong>Rp400.000</strong><br>
+                                • Business License (2 device) <s>Rp950.000</s> <strong>Rp700.000</strong><br>
+                                • Enterprise License (5 device) <s>Rp1.250.000</s> <strong>Rp900.000</strong>
+                            </span>
                         </div>
-                        
-                        <!-- Pre-order Form -->
-                        <div class="preorder-form">
-                            <div class="preorder-title">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Form Uang Muka (DP)</span>
-                            </div>
-                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
-                            <p class="preorder-note">
-                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
-                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
-                            </p>
-                            <button class="btn-preorder">
-                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
-                            </button>
-                        </div>
-                        
-                        <div id="details-FSH-2025-3348" class="gallery-detail-expanded">
-                            <div class="gallery-carousel">
-                                <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Fashion" class="gallery-main-image lazy" loading="lazy" id="main-image-2">
-                                <div class="gallery-thumbnails">
-                                    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kaos Polos" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
-                                    <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kemeja" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
-                                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Jeans" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-2', this)">
-                                </div>
-                            </div>
-                            
-                            <p class="gallery-description">
-                                <strong>DISKON AKHIR TAHUN 50%!</strong> FashionKu memberikan promo spesial akhir tahun dengan diskon hingga 50% untuk berbagai produk fashion berkualitas. Mulai dari kaos polos, kemeja, hingga jeans dengan bahan premium dan desain terkini. Promo ini berlaku untuk waktu terbatas, jangan lewatkan kesempatan ini untuk memperbarui koleksi fashion Anda dengan harga spesial!
-                            </p>
-                            
-                            <div class="gallery-specs">
-                                <div class="spec-item">
-                                    <span class="spec-label">Kode Promo:</span>
-                                    <span class="spec-value">FSH-2025-3348</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Nama Toko:</span>
-                                    <span class="spec-value">FashionKu</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Alamat:</span>
-                                    <span class="spec-value">Jl. Fashion No. 123, Kota Anda</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Kontak:</span>
-                                    <span class="spec-value">081234567890 | fashionku@example.com</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Daftar Promo:</span>
-                                    <span class="spec-value">
-                                        • Kaos Polos <s>Rp199.000</s> <strong>Rp99.000</strong> (50% OFF)<br>
-                                        • Kemeja <s>Rp299.000</s> <strong>Rp149.000</strong> (50% OFF)<br>
-                                        • Jeans <s>Rp399.000</s> <strong>Rp199.000</strong> (50% OFF)
-                                    </span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Periode Promo:</span>
-                                    <span class="spec-value">1 - 31 Desember 2025</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Syarat & Ketentuan:</span>
-                                    <span class="spec-value">
-                                        • Promo berlaku untuk pembelian online dan offline<br>
-                                        • Minimal pembelian Rp200.000 untuk gratis ongkir<br>
-                                        • Stok terbatas
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <div class="gallery-actions-expanded">
-                                <a href="https://wa.me/6281234567890?text=Halo%20FashionKu,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                                </a>
-                                <a href="tel:+6281234567890" class="btn-call">
-                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
-                                </a>
-                            </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Bonus Pembelian:</span>
+                            <span class="spec-value">
+                                • Template desain menu digital<br>
+                                • Video tutorial lengkap<br>
+                                • Panduan penggunaan PDF<br>
+                                • 3 bulan support premium<br>
+                                • Voucher diskon 15% untuk pembelian produk lainnya
+                            </span>
                         </div>
                     </div>
                 </div>
-
-                <!-- GALLERY ITEM 3 - ELECTRONICS PROMO -->
-                <div class="gallery-item" data-category="electronics" data-type="promo">
-                    <a href="https://lenterakarya.github.io/umkm-online/" target="_blank" class="gallery-badge seller">Gerai: TechShop</a>
-                    <span class="gallery-badge promo">Cashback 20%</span>
-                    <div class="gallery-image-container">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Elektronik" class="gallery-image lazy" loading="lazy">
-                    </div>
-                    <div class="gallery-details">
-                        <h3 class="gallery-title">Promo Gadget TechShop</h3>
-                        <div class="gallery-meta">
-                            <span class="gallery-code">Kode: TEC-2025-4567</span>
-                            <span class="gallery-seller"><i class="fas fa-store"></i> TechShop</span>
-                        </div>
-                        <p class="gallery-price">
-                            Rp 7.999.000 <span class="original-price">Rp 9.999.000</span>
-                            <span class="discount">20%</span>
-                        </p>
-                        
-                        <!-- Price Variations -->
-                        <div class="price-variations">
-                            <div class="price-variation active" data-price="7999000">
-                                <span class="price-variation-name">MacBook Air</span>
-                                <span class="price-variation-value">Rp 7.999.000</span>
-                            </div>
-                            <div class="price-variation" data-price="5999000">
-                                <span class="price-variation-name">iPad Pro</span>
-                                <span class="price-variation-value">Rp 5.999.000</span>
-                            </div>
-                            <div class="price-variation" data-price="2999000">
-                                <span class="price-variation-name">iPhone SE</span>
-                                <span class="price-variation-value">Rp 2.999.000</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Quantity Selector -->
-                        <div class="quantity-selector">
-                            <span class="quantity-label">Jumlah:</span>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" class="quantity-input" value="1" min="1">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                            <div class="unit-selector">
-                                <select class="unit-select">
-                                    <option value="pcs" selected>pcs</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- Total Price -->
-                        <div class="total-price">
-                            <span class="total-price-label">Total Harga:</span>
-                            <span class="total-price-value">Rp 7.999.000</span>
-                        </div>
-                        
-                        <!-- Action Buttons -->
-                        <div class="gallery-actions">
-                            <button class="btn-detail" data-target="details-TEC-2025-4567">
-                                <i class="fas fa-chevron-down"></i> Detail Produk
-                            </button>
-                            <button class="btn-order">
-                                <i class="fas fa-shopping-cart"></i> Pesan Sekarang
-                            </button>
-                            <button class="btn-preorder-toggle">
-                                <i class="fas fa-calendar-check"></i> Pre-Order
-                            </button>
-                        </div>
-                        
-                        <!-- Pre-order Form -->
-                        <div class="preorder-form">
-                            <div class="preorder-title">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Form Uang Muka (DP)</span>
-                            </div>
-                            <input type="number" class="preorder-input" placeholder="Masukkan nominal DP (minimal 40%)">
-                            <p class="preorder-note">
-                                * Untuk pre-order, harap masukkan nominal uang muka minimal 40% dari total harga. 
-                                Kami akan menghubungi Anda untuk konfirmasi lebih lanjut.
-                            </p>
-                            <button class="btn-preorder">
-                                <i class="fas fa-paper-plane"></i> Kirim Pre-Order
-                            </button>
-                        </div>
-                        
-                        <div id="details-TEC-2025-4567" class="gallery-detail-expanded">
-                            <div class="gallery-carousel">
-                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Promo Elektronik" class="gallery-main-image lazy" loading="lazy" id="main-image-3">
-                                <div class="gallery-thumbnails">
-                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="MacBook Air" class="thumbnail active lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
-                                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPad Pro" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
-                                    <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="iPhone SE" class="thumbnail lazy" loading="lazy" onclick="changeMainImage('main-image-3', this)">
-                                </div>
-                            </div>
-                            
-                            <p class="gallery-description">
-                                <strong>CASHBACK 20%!</strong> TechShop memberikan promo spesial untuk produk gadget terbaru dengan cashback hingga 20%. Dapatkan MacBook Air, iPad Pro, atau iPhone SE dengan harga terbaik di pasaran. Semua produk original dengan garansi resmi 1 tahun. Promo ini berlaku untuk pembelian online dan offline dengan syarat dan ketentuan yang berlaku.
-                            </p>
-                            
-                            <div class="gallery-specs">
-                                <div class="spec-item">
-                                    <span class="spec-label">Kode Promo:</span>
-                                    <span class="spec-value">TEC-2025-4567</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Nama Toko:</span>
-                                    <span class="spec-value">TechShop</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Alamat:</span>
-                                    <span class="spec-value">Jl. Teknologi No. 456, Kota Anda</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Kontak:</span>
-                                    <span class="spec-value">082345678901 | techshop@example.com</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Daftar Promo:</span>
-                                    <span class="spec-value">
-                                        • MacBook Air <s>Rp9.999.000</s> <strong>Rp7.999.000</strong> (20% OFF)<br>
-                                        • iPad Pro <s>Rp7.499.000</s> <strong>Rp5.999.000</strong> (20% OFF)<br>
-                                        • iPhone SE <s>Rp3.749.000</s> <strong>Rp2.999.000</strong> (20% OFF)
-                                    </span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Periode Promo:</span>
-                                    <span class="spec-value">1 - 15 Januari 2025</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-label">Syarat & Ketentuan:</span>
-                                    <span class="spec-value">
-                                        • Promo berlaku untuk pembelian minimal Rp5.000.000<br>
-                                        • Cashback akan diberikan dalam bentuk voucher belanja<br>
-                                        • Stok terbatas, berlaku selama persediaan masih ada
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            <div class="gallery-actions-expanded">
-                                <a href="https://wa.me/6282345678901?text=Halo%20TechShop,%20saya%20tertarik%20dengan%20promo%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                                </a>
-                                <a href="tel:+6282345678901" class="btn-call">
-                                    <i class="fas fa-phone-alt"></i> Telepon Sekarang
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                
+                <div class="gallery-actions-expanded">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Lentera%20Digital%20Solutions,%20saya%20tertarik%20dengan%20Aplikasi%20Cafe%20%26%20Restoran%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                    </a>
+                    <a href="tel:+6281234567890" class="btn-call">
+                        <i class="fas fa-phone-alt"></i> Telepon Sekarang
+                    </a>
                 </div>
-            </div>   
-        </section>
+            </div>
+        </div>
+    </div>
+</div>
         
         <!-- Contact Section -->
         <section class="contact" id="contact">
