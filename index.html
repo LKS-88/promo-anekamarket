@@ -2439,6 +2439,53 @@
             .device-frame {
                 width: 150px;
             }
+            
+            /* Improved mobile navigation */
+            .nav-links {
+                width: 100%;
+                max-width: none;
+                padding-top: 100px;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+            
+            /* Better form inputs on mobile */
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            /* Improved gallery items on mobile */
+            .gallery-item {
+                margin-bottom: 2rem;
+            }
+            
+            .gallery-image-container {
+                height: 250px;
+            }
+            
+            /* Better price display */
+            .gallery-price {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            /* Improved testimonial layout */
+            .testimonial {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .testimonial-avatar {
+                margin-bottom: 1rem;
+            }
         }
         
         @media (max-width: 400px) {
@@ -2469,6 +2516,111 @@
 
             .device-frame {
                 width: 120px;
+            }
+            
+            /* Further mobile optimizations */
+            .header-content {
+                padding: 1.5rem 1rem;
+            }
+            
+            .header-search input {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .header-search button {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .gallery-details {
+                padding: 1.5rem 1rem;
+            }
+            
+            .gallery-detail-expanded {
+                padding: 0 1rem 1rem;
+            }
+            
+            .gallery-specs .spec-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .spec-label {
+                min-width: auto;
+            }
+            
+            .contact-info, .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-detail {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-top: 0;
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+            
+            .footer-links li::before {
+                display: none;
+            }
+            
+            .footer-links a:hover {
+                transform: none;
+            }
+            
+            .contact-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Special adjustments for very small screens */
+        @media (max-width: 350px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .header-buttons .btn {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .gallery-grid {
+                gap: 1.5rem;
+            }
+            
+            .category-tabs {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .product-categories {
+                gap: 0.5rem;
+            }
+            
+            .product-category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -3184,25 +3336,6 @@
             });
         });
 
-        // Pre-order Toggle Buttons
-        const preorderToggles = document.querySelectorAll('.btn-preorder-toggle');
-        
-        preorderToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const preorderForm = this.nextElementSibling;
-                preorderForm.classList.toggle('active');
-                
-                // Toggle button text
-                if (preorderForm.classList.contains('active')) {
-                    this.innerHTML = '<i class="fas fa-calendar-times"></i> Tutup Form';
-                } else {
-                    this.innerHTML = '<i class="fas fa-calendar-check"></i> Pre-Order';
-                }
-                
-                document.getElementById('clickSound').play();
-            });
-        });
-
         // Price Variation Selection
         const priceVariations = document.querySelectorAll('.price-variation');
         
@@ -3230,44 +3363,6 @@
                 document.getElementById('clickSound').play();
             });
         });
-
-        // Quantity Controls
-        const quantityControls = document.querySelectorAll('.quantity-controls');
-        
-        quantityControls.forEach(control => {
-            const minusBtn = control.querySelector('.minus');
-            const plusBtn = control.querySelector('.plus');
-            const input = control.querySelector('.quantity-input');
-            
-            minusBtn.addEventListener('click', function() {
-                if (parseInt(input.value) > 1) {
-                    input.value = parseInt(input.value) - 1;
-                    updateTotalPrice(this.closest('.gallery-item'));
-                    document.getElementById('clickSound').play();
-                }
-            });
-            
-            plusBtn.addEventListener('click', function() {
-                input.value = parseInt(input.value) + 1;
-                updateTotalPrice(this.closest('.gallery-item'));
-                document.getElementById('clickSound').play();
-            });
-            
-            input.addEventListener('change', function() {
-                if (parseInt(this.value) < 1) this.value = 1;
-                updateTotalPrice(this.closest('.gallery-item'));
-            });
-        });
-
-        // Function to update total price
-        function updateTotalPrice(item) {
-            const activePrice = item.querySelector('.price-variation.active').dataset.price;
-            const quantity = parseInt(item.querySelector('.quantity-input').value);
-            const totalPrice = activePrice * quantity;
-            
-            const formattedTotal = new Intl.NumberFormat('id-ID').format(totalPrice);
-            item.querySelector('.total-price-value').textContent = 'Rp ' + formattedTotal;
-        }
 
         // Change Main Image in Gallery Carousel
         function changeMainImage(mainImageId, thumbnail) {
