@@ -1524,7 +1524,7 @@
             background: linear-gradient(135deg, var(--success), #0ea271);
         }
         
-        /* FOOTER DESIGN */
+        /* FOOTER DESIGN - IMPROVED */
         footer {
             background: linear-gradient(135deg, var(--dark-2), var(--dark));
             color: white;
@@ -1554,7 +1554,6 @@
             gap: 3rem;
             position: relative;
             z-index: 1;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .footer-col {
@@ -1585,7 +1584,21 @@
             grid-column: 1 / -1;
             text-align: center;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 3rem;
+            position: relative;
+            padding-bottom: 3rem;
+        }
+        
+        .footer-about::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-about h3::after {
@@ -1621,6 +1634,32 @@
             color: white;
         }
         
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
         /* Footer Links */
         .footer-links {
             list-style: none;
@@ -1628,26 +1667,6 @@
         
         .footer-links li {
             margin-bottom: 1.2rem;
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .footer-links li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .footer-links li:hover::before {
-            transform: translateY(-50%) scale(1.3);
-            background-color: white;
         }
         
         .footer-links a {
@@ -1660,9 +1679,24 @@
             position: relative;
         }
         
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
         .footer-links a:hover {
             color: white;
-            transform: translateX(10px);
+            transform: translateX(5px);
+        }
+        
+        .footer-links a:hover::before {
+            width: 30px;
         }
         
         .newsletter-form {
@@ -1703,6 +1737,7 @@
             color: rgba(255, 255, 255, 0.6);
             position: relative;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.2);
         }
         
         .copyright a {
@@ -2293,6 +2328,29 @@
                 bottom: 2rem;
                 right: 2rem;
             }
+            
+            /* Improved Footer for Tablet */
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-about {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
         }
         
         @media (max-width: 768px) {
@@ -2367,14 +2425,6 @@
                 width: 60px;
                 height: 60px;
                 font-size: 1.8rem;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .footer-about {
-                grid-column: 1 / -1;
             }
             
             .modal-content {
@@ -2507,102 +2557,167 @@
             .testimonial-avatar {
                 margin-bottom: 1rem;
             }
+            
+            /* Improved footer for mobile */
+            .footer-about {
+                padding-bottom: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .footer-about::after {
+                width: 90%;
+            }
+            
+            .footer-col h3 {
+                font-size: 1.3rem;
+            }
+            
+            .footer-links a {
+                font-size: 1rem;
+            }
+            
+            .footer-social a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .newsletter-form input {
+                padding: 0.8rem;
+            }
         }
         
         @media (max-width: 400px) {
             .logo {
                 font-size: 2rem;
-            }
-            
-            .logo img {
-                height: 50px;
-            }
-            
-            .tagline {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .gallery-main-image {
-                height: 200px;
-            }
-            
-            .thumbnail {
-                width: 70px;
-                height: 70px;
-            }
-
-            .device-frame {
-                width: 120px;
-            }
-            
-            /* Further mobile optimizations */
-            .header-content {
-                padding: 1.5rem 1rem;
-            }
-            
-            .header-search input {
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .header-search button {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .gallery-details {
-                padding: 1.5rem 1rem;
-            }
-            
-            .gallery-detail-expanded {
-                padding: 0 1rem 1rem;
-            }
-            
-            .gallery-specs .spec-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .spec-label {
-                min-width: auto;
-            }
-            
-            .contact-info, .contact-form {
-                padding: 2rem 1.5rem;
-            }
-            
-            .contact-detail {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-            
-            .contact-icon {
-                margin-top: 0;
-            }
-            
-            .footer-col {
-                text-align: center;
-            }
-            
-            .footer-links li::before {
-                display: none;
-            }
-            
-            .footer-links a:hover {
-                transform: none;
-            }
-            
-            .contact-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
+            text-align: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            padding: 0 0.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-main-image {
+            height: 200px;
+        }
+        
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+        }
+
+        .device-frame {
+            width: 120px;
+        }
+        
+        /* Further mobile optimizations */
+        .header-content {
+            padding: 1.5rem 1rem;
+        }
+        
+        .header-search input {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .header-search button {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .gallery-details {
+            padding: 1.5rem 1rem;
+        }
+        
+        .gallery-detail-expanded {
+            padding: 0 0.8rem 0.8rem;
+        }
+        
+        .gallery-specs .spec-item {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .spec-label {
+            min-width: auto;
+        }
+        
+        .contact-info, .contact-form {
+            padding: 2rem 1.5rem;
+        }
+        
+        .contact-detail {
+            flex-direction: column;
+            gap: 0.5rem;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            margin-top: 0;
+        }
+        
+        .footer-col {
+            text-align: center;
+            padding: 0 0.5rem;
+        }
+        
+        .footer-links li::before {
+            display: none;
+        }
+        
+        .footer-links a:hover {
+            transform: none;
+        }
+        
+        .contact-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer improvements for very small screens */
+        .footer-logo {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .footer-logo span {
+            font-size: 1.5rem;
+        }
+        
+        .footer-social {
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input {
+            padding: 0.7rem;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            padding: 1.5rem 0.5rem;
+        }
+    }
         
         /* Special adjustments for very small screens */
         @media (max-width: 350px) {
@@ -2889,7 +3004,7 @@
                                             <img src="https://raw.githubusercontent.com/LKS-88/promo-anekamarket/main/assets/galeri/foto1.jpeg" alt="Testimonial" class="testimonial-avatar">
                                             <div class="testimonial-content">
                                                 <p>"Saya bisa cek laporan penjualan cafe dari HP saat di rumah. Aplikasinya ringan tapi fiturnya lengkap. Developer-nya juga responsif saat saya tanya cara backup data."</p>
-                                                <span class="testimonial-author">- Pak Sanusi, Pemilik Cafe Budaya</span>
+                                                <span class="testimonial-author">- Pak Sanusi, Pemilah Cafe Budaya</span>
                                             </div>
                                         </div>
                                     </div>
@@ -3064,82 +3179,84 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
                         
-                        <!-- Contact Section -->
-                        <section class="contact" id="contact">
-                            <h2 class="section-title">Hubungi Kami</h2>
-                            <div class="contact-container">
-                                <div class="contact-info">
-                                    <h3>Informasi Kontak</h3>
-                                    <div class="contact-detail">
-                                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                                        <div class="contact-text">
-                                            <h4>Alamat</h4>
-                                            <p>Wringin Anom-Situbondo<br>Provinsi Jawa Timur (68351)</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-detail">
-                                        <i class="fas fa-phone-alt contact-icon"></i>
-                                        <div class="contact-text">
-                                            <h4>Telepon</h4>
-                                            <p>+6281336150986</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-detail">
-                                        <i class="fas fa-envelope contact-icon"></i>
-                                        <div class="contact-text">
-                                            <h4>Email</h4>
-                                            <p>admin@anekamarket.my.id</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-detail">
-                                        <i class="fas fa-clock contact-icon"></i>
-                                        <div class="contact-text">
-                                            <h4>Jam Operasional</h4>
-                                            <p>Senin - Minggu: 08.00 - 20.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="contact-form">
-                                    <h3>Kirim Pesan</h3>
-                                    <div id="formStatus" class="form-status" style="display: none;"></div>
-                                    <form id="contactForm" action="https://formsubmit.co/admin@anekamarket.my.id" method="POST">
-                                        <input type="hidden" name="_captcha" value="false">
-                                        <input type="hidden" name="_next" value="https://promokita.com/thank-you.html">
-                                        <input type="hidden" name="_template" value="table">
-                                        <div class="form-group">
-                                            <label for="name">Nama Anda</label>
-                                            <input type="text" id="name" name="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Alamat Email</label>
-                                            <input type="email" id="email" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone">Nomor Telepon</label>
-                                            <input type="tel" id="phone" name="phone" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="subject">Subjek</label>
-                                            <select id="subject" name="subject" required>
-                                                <option value="" disabled selected>Pilih subjek</option>
-                                                <option value="general">Pertanyaan Umum</option>
-                                                <option value="promo">Pertanyaan Promo</option>
-                                                <option value="other">Lainnya</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message">Pesan</label>
-                                            <textarea id="message" name="message" required></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" id="submitBtn">
-                                            <i class="fas fa-paper-plane"></i> Kirim Pesan
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </section>
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Alamat</h4>
+                            <p>Wringin Anom-Situbondo<br>Provinsi Jawa Timur (68351)</p>
+                        </div>
                     </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Telepon</h4>
+                            <p>+6281336150986</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>admin@anekamarket.my.id</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <div class="contact-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 08.00 - 20.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <div id="formStatus" class="form-status" style="display: none;"></div>
+                    <form id="contactForm" action="https://formsubmit.co/admin@anekamarket.my.id" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://promokita.com/thank-you.html">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <label for="name">Nama Anda</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Pilih subjek</option>
+                                <option value="general">Pertanyaan Umum</option>
+                                <option value="promo">Pertanyaan Promo</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
     
     <!-- Floating Contact Buttons -->
     <div class="contact-bar">
@@ -3154,7 +3271,7 @@
         </button>
     </div>
     
-    <!-- FOOTER -->
+    <!-- FOOTER - IMPROVED -->
     <footer>
         <div class="footer-container">
             <div class="footer-col footer-about">
@@ -3163,6 +3280,13 @@
                     <span>Promo ANEKAMARKET</span>
                 </div>
                 <p>Platform khusus untuk menemukan berbagai promo dan diskon menarik dari berbagai merchant terpercaya. Kami berkomitmen untuk memberikan penawaran terbaik dengan harga spesial untuk pelanggan setia kami.</p>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
             
             <div class="footer-col">
@@ -3173,6 +3297,17 @@
                     <li><a href="#contact">Kontak</a></li>
                     <li><a href="#">Syarat & Ketentuan</a></li>
                     <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Kategori Produk</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Aplikasi Web</a></li>
+                    <li><a href="#">Software Bisnis</a></li>
+                    <li><a href="#">Template Website</a></li>
+                    <li><a href="#">Tools Produktivitas</a></li>
+                    <li><a href="#">Layanan Digital</a></li>
                 </ul>
             </div>
             
