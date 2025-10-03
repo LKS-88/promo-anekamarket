@@ -70,41 +70,6 @@
             line-height: 1.3;
         }
         
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--dark-2));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top-color: var(--light);
-            border-radius: 50%;
-            animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
-            margin-bottom: 1.5rem;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), var(--dark-2));
@@ -2762,18 +2727,11 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="loading-spinner"></div>
-        <h2 style="color: white; font-family: 'Montserrat', sans-serif; margin-top: 1.5rem;">Promo ANEKAMARKET</h2>
-    </div>
     
-    <!-- Background Music - Autoplay and Loop -->
     <audio id="bgMusic" loop autoplay>
         <source src="https://github.com/LenteraKarya/jualan-kita/blob/main/assets/audio/Musik%20website.mp3?raw=true" type="audio/mpeg">
     </audio>
     
-    <!-- Header Modern -->
     <header id="home">
         <div class="header-overlay"></div>
         <div class="header-content">
@@ -2783,7 +2741,6 @@
             </div>
             <p class="tagline">Temukan Promo Terbaik dengan Harga Spesial</p>
             
-            <!-- Search Bar in Header -->
             <div class="header-search">
                 <input type="text" id="headerSearchInput" placeholder="Cari produk promo...">
                 <button id="headerSearchBtn"><i class="fas fa-search"></i></button>
@@ -2803,7 +2760,6 @@
         </div>
     </header>
     
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
@@ -2811,7 +2767,6 @@
                 <span>Promo ANEKAMARKET</span>
             </a>
             
-            <!-- Nav Search (Hidden on mobile) -->
             <div class="nav-search" id="navSearch">
                 <input type="text" placeholder="Cari produk promo...">
                 <button><i class="fas fa-search"></i></button>
@@ -2834,13 +2789,11 @@
     </nav>
     
     <div class="container">
-        <!-- Gallery Section -->
         <section class="gallery" id="gallery">
             <h2 class="section-title">Promo Spesial</h2>
             <div class="gallery-intro">
                 <p>Jelajahi koleksi promo menarik dengan diskon spesial. Klik "Detail" untuk melihat lebih banyak informasi tentang promo yang tersedia.</p>
                 
-                <!-- New Product Categories -->
                 <div class="product-categories">
                     <button class="product-category-btn active" data-category="all">Semua Kategori</button>
                     <button class="product-category-btn" data-category="software">Aplikasi Web</button>
@@ -2855,7 +2808,6 @@
                 </div>
                 
                 <div class="gallery-grid">
-                    <!-- GALLERY ITEM - WEB APPS BUNDLE -->
                     <div class="gallery-item" data-category="software" data-type="promo">
                         <span class="gallery-badge seller">Developer: Lentera Karya Situbondo</span>
                         <span class="gallery-badge promo">Super Deal</span>
@@ -2874,7 +2826,6 @@
                                 <span class="discount">33% OFF</span>
                             </p>
                             
-                            <!-- Price Variations -->
                             <div class="price-variations">
                                 <div class="price-variation active" data-price="599000">
                                     <span class="price-variation-name">Paket Komplit (7 Aplikasi)</span>
@@ -2899,7 +2850,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Compatibility Badges -->
                             <div class="compatibility-badges">
                                 <span class="compatibility-badge"><i class="fas fa-desktop"></i> Desktop</span>
                                 <span class="compatibility-badge"><i class="fas fa-tablet-alt"></i> Tablet</span>
@@ -2907,7 +2857,6 @@
                                 <span class="compatibility-badge"><i class="fas fa-check-circle"></i> Tanpa Install</span>
                             </div>
                             
-                            <!-- Action Buttons -->
                             <div class="gallery-actions">
                                 <button class="btn-detail" data-target="details-LDW-2025-8001">
                                     <i class="fas fa-chevron-down"></i> Detail Produk
@@ -3022,7 +2971,6 @@
                         </div>
                     </div>
                 
-                    <!-- GALLERY ITEM - WEB CASHIER -->
                     <div class="gallery-item" data-category="software" data-type="new">
                         <span class="gallery-badge seller">Developer: Lentera Karya Situbondo</span>
                         <span class="gallery-badge new">Baru!</span>
@@ -3041,7 +2989,6 @@
                                 <span class="discount">22% OFF</span>
                             </p>
                             
-                            <!-- Key Features -->
                             <div class="key-features">
                                 <div class="feature-item">
                                     <i class="fas fa-check-circle"></i>
@@ -3061,7 +3008,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Action Buttons -->
                             <div class="gallery-actions">
                                 <button class="btn-detail" data-target="details-LDW-2025-8002">
                                     <i class="fas fa-chevron-down"></i> Detail Produk
@@ -3182,7 +3128,6 @@
             </div>
         </section>
                         
-        <!-- Contact Section -->
         <section class="contact" id="contact">
             <h2 class="section-title">Hubungi Kami</h2>
             <div class="contact-container">
@@ -3258,7 +3203,6 @@
         </section>
     </div>
     
-    <!-- Floating Contact Buttons -->
     <div class="contact-bar">
         <a href="https://wa.me/6285647709114" class="contact-btn whatsapp" target="_blank" aria-label="Hubungi via WhatsApp">
             <i class="fab fa-whatsapp"></i>
@@ -3271,7 +3215,6 @@
         </button>
     </div>
     
-    <!-- FOOTER - IMPROVED -->
     <footer>
         <div class="footer-container">
             <div class="footer-col footer-about">
@@ -3328,7 +3271,6 @@
         </div>
     </footer>
     
-    <!-- Order Modal -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -3359,19 +3301,16 @@
         </div>
     </div>
 
-    <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
         <div class="search-modal-content">
             <span class="close-search-modal">&times;</span>
             <input type="text" class="search-modal-input" placeholder="Cari produk promo...">
             <div class="search-results">
-                <!-- Search results will be dynamically inserted here -->
                 <div class="no-results">Masukkan kata kunci untuk mencari promo</div>
             </div>
         </div>
     </div>
 
-    <!-- Image Zoom Modal -->
     <div class="image-modal" id="imageModal">
         <div class="image-modal-content">
             <span class="close-image-modal">&times;</span>
@@ -3379,18 +3318,13 @@
         </div>
     </div>
 
-    <!-- Audio Elements for Button Sounds -->
     <audio id="clickSound" src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/audio/click.mp3"></audio>
     <audio id="hoverSound" src="https://raw.githubusercontent.com/LenteraKarya/jualan-kita/main/assets/audio/hover.mp3"></audio>
 
-    <!-- JavaScript -->
     <script>
-        // Loading Screen
+        // Play background music on load
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.loading-screen').classList.add('hidden');
-                document.getElementById('bgMusic').play().catch(e => console.log("Autoplay prevented:", e));
-            }, 1500);
+            document.getElementById('bgMusic').play().catch(e => console.log("Autoplay was prevented by the browser:", e));
         });
 
         // Navigation Scroll Effect
